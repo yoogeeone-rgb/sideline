@@ -614,6 +614,93 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   white-space:nowrap;
 }
 
+/* ABOUT */
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  background:#0a0a0a;
+  margin:64px 48px 0;
+}
+.about-card {
+  background:#111111;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+}
+.about-card-img {
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#1e1e1e;
+  position:relative;
+}
+.about-card-img img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  filter:saturate(0.85);
+  transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.about-card:hover .about-card-img img { transform:scale(1.04); }
+.about-card-body {
+  padding:40px 40px 48px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  border-top:1px solid var(--light);
+}
+.about-card-role {
+  font-size:11px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:12px;
+}
+.about-card-name {
+  font-family:var(--serif);
+  font-size:clamp(28px,3.5vw,44px);
+  font-weight:400;
+  color:var(--black);
+  line-height:1.05;
+  margin-bottom:28px;
+}
+.about-card-desc {
+  font-size:15px;
+  line-height:2;
+  color:var(--gray);
+  letter-spacing:0;
+  word-break:keep-all;
+  margin-bottom:32px;
+  flex:1;
+}
+.about-card-sports {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:32px;
+}
+.about-sport-tag {
+  font-size:11px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--gray);
+  border:1px solid var(--light);
+  border-radius:999px;
+  padding:5px 14px;
+}
+.about-card-ig {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  letter-spacing:0.06em;
+  color:var(--gray);
+  text-decoration:none;
+  transition:color 0.15s;
+  align-self:flex-start;
+}
+.about-card-ig:hover { color:var(--accent); }
+.about-card-ig svg { width:16px; height:16px; flex-shrink:0; }
+
 /* MOBILE */
 @media (max-width:768px) {
   .page-header { padding:24px 16px 0; }
@@ -669,6 +756,8 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   .contact-body { padding:24px 16px 0; }
   .guide-body { padding:24px 16px 60px; }
 
+  .about-grid { grid-template-columns:1fr; margin:32px 0 0; }
+  .about-card-body { padding:28px 20px 36px; }
   .ig-float { bottom:24px; right:20px; }
 }
 </style>
@@ -686,6 +775,7 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
     <nav class="main-menu">
       <a href="#" class="active" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
@@ -821,6 +911,7 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
     <nav class="main-menu">
       <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
       <a href="#" class="active" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
@@ -871,6 +962,8 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
           <li>하이라이트 컷 20장 보정 납품</li>
           <li>전체 원본 파일 제공</li>
           <li>SNS 용도 사용 라이선스 포함</li>
+          <li>상업적 사용 시 별도 문의</li>
+          <li>촬영 시간 연장 및 사진작가 추가 옵션 가능 (별도 문의)</li>
         </ul>
         <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;">문의하기</a>
       </div>
@@ -887,8 +980,8 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
         <ul class="package-list">
           <li>2인 사진작가 팀 구성 (경기 전·후 포함 풀타임)</li>
           <li>하이라이트 컷 50장 이상 보정 납품</li>
-          <li>전체 원본 파일 + RAW 제공</li>
-          <li>경기 후 24시간 이내 SNS 즉시 활용 컷 우선 전달</li>
+          <li>전체 원본 파일 제공</li>
+          <li>경기 후 24시간 이내 보도자료 및 SNS 활용 컷 우선 전달</li>
           <li>상업적 사용 라이선스 포함 (광고·인쇄물 등)</li>
         </ul>
         <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;">문의하기</a>
@@ -938,8 +1031,8 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
         <div class="package-divider"></div>
         <div class="service-select-title" style="margin-bottom:16px;margin-top:auto;">포함 사항</div>
         <ul class="package-list">
-          <li>촬영 세션 최대 1시간 (컨셉 1–2개)</li>
-          <li>보정본 10장 제공</li>
+          <li>컨셉당 촬영시간 30분 (컨셉 1–2개)</li>
+          <li>보정본 2장 제공</li>
           <li>전체 원본 파일 제공</li>
         </ul>
         <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;">예약하기</a>
@@ -955,10 +1048,11 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
         <div class="package-divider"></div>
         <div class="service-select-title" style="margin-bottom:16px;">포함 사항</div>
         <ul class="package-list">
-          <li>촬영 세션 최대 3시간 (컨셉 3–5개)</li>
-          <li>보정본 30장 + 추가 SNS 크롭 컷 제공</li>
-          <li>전체 원본 RAW 파일 제공</li>
+          <li>컨셉별 촬영시간 45분 (컨셉 3–5개)</li>
+          <li>보정본 4장 제공</li>
+          <li>전체 원본 파일 제공</li>
           <li>상업적 사용 라이선스 포함</li>
+          <li>촬영 후 이미지 1장 1:1 현장 보정</li>
           <li>촬영 후 비주얼 디렉팅 리포트 제공</li>
         </ul>
         <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;">예약하기</a>
@@ -989,6 +1083,7 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
     <nav class="main-menu">
       <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" class="active" onclick="showPage('contact');return false;">Contact</a>
@@ -1048,6 +1143,7 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
     <nav class="main-menu">
       <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
@@ -1103,6 +1199,90 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
 </div>
 
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="page-header">
+    <div class="page-title-row">
+      <h1 class="page-title">About<br>Sideline</h1>
+      <button class="page-logo-btn" onclick="showPage('home')">
+        <div class="page-logo-text">Sideline<span>.</span>seoul</div>
+      </button>
+    </div>
+    <nav class="main-menu">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" class="active" onclick="showPage('about');return false;">About</a>
+      <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('service');return false;">Service</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+      <a href="#" onclick="showPage('guide');return false;">Guide</a>
+    </nav>
+  </div>
+
+  <div class="about-grid">
+
+    <!-- 유지원 -->
+    <div class="about-card">
+      <div class="about-card-img">
+        <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=900&q=80" alt="유지원">
+      </div>
+      <div class="about-card-body">
+        <div class="about-card-role">Photographer</div>
+        <div class="about-card-name">유지원</div>
+        <p class="about-card-desc">
+          링 위의 순간은 선수가 평생을 걸어온 길의 총합입니다. 그 무게를 한 컷에 담기 위해, 셔터를 누르기 전 선수의 숨결까지 읽습니다.<br><br>
+          스포츠 영양제 브랜드 Extreme, 복싱 브랜드 312의 공식 포토그래퍼로 활동했으며, 복싱 대회 NO KO NO WIN의 오피셜 포토그래퍼로서 현장의 날것을 기록해왔습니다.<br><br>
+          경기장의 열기와 선수의 집중, 그 교차점에서 터지는 결정적 순간 — 그것이 유지원이 쫓는 한 장입니다.
+        </p>
+        <div class="about-card-sports">
+          <span class="about-sport-tag">Boxing</span>
+          <span class="about-sport-tag">B-Boying</span>
+        </div>
+        <a class="about-card-ig" href="https://instagram.com/thefists.korea" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          @thefists.korea
+        </a>
+      </div>
+    </div>
+
+    <!-- 신화삼 -->
+    <div class="about-card">
+      <div class="about-card-img">
+        <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=900&q=80" alt="신화삼">
+      </div>
+      <div class="about-card-body">
+        <div class="about-card-role">Photographer</div>
+        <div class="about-card-name">신화삼</div>
+        <p class="about-card-desc">
+          스포츠는 각본 없는 드라마이며, 그라운드 위에서 타오르는 열정은 두 번 다시 똑같은 형태로 반복되지 않습니다.<br><br>
+          거친 숨소리, 뺨을 타고 흐르는 땀방울, 승리를 향한 지독한 집념까지. Sideline.seoul은 그라운드 위에서 흔적 없이 휘발되어 버릴 찰나의 에너지를, 영원히 숨 쉬는 시각적 유산으로 조각합니다.<br><br>
+          카메라 렌즈 너머로 선수의 심장 박동을 쫓으며, 당신이 흘린 땀의 무게가 가장 찬란한 예술 작품이 되는 순간을 약속합니다.
+        </p>
+        <div class="about-card-sports">
+          <span class="about-sport-tag">Rugby</span>
+          <span class="about-sport-tag">Lacrosse</span>
+          <span class="about-sport-tag">Football</span>
+          <span class="about-sport-tag">American Football</span>
+        </div>
+        <a class="about-card-ig" href="https://instagram.com/shinhwasam" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+          @shinhwasam
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lb-close" onclick="closeLightbox()">Close ✕</button>
@@ -1135,7 +1315,7 @@ function showPage(id) {
 
 (function() {
   var hash = window.location.hash.replace('#', '');
-  var valid = ['home','work','service','contact','guide'];
+  var valid = ['home','work','about','service','contact','guide'];
   if (hash && valid.indexOf(hash) !== -1) showPage(hash);
   else showPage('home');
 })();
