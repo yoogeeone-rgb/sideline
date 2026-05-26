@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sideline.seoul — Sports Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #f0ede6;
+  --white: #111111;
+  --gray: #888884;
+  --light: #272727;
+  --accent: #c8f028;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', 'Noto Sans KR', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--white);
+  color:var(--black);
+  font-family:var(--sans);
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  max-width:1440px;
+  margin:0 auto;
+}
+
+/* PAGES */
+.page { display:none; }
+.page.active { display:block; }
+
+/* PAGE HEADER */
+.page-header { padding:48px 48px 0; }
+.page-title-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:28px;
+}
+.page-title {
+  font-family:var(--serif);
+  font-size:clamp(64px,10vw,120px);
+  font-weight:400;
+  line-height:1;
+  letter-spacing:-0.01em;
+}
+.page-title em {
+  font-style:italic;
+  color:var(--accent);
+}
+.page-logo-btn {
+  background:none;
+  border:none;
+  cursor:pointer;
+  flex-shrink:0;
+  margin-left:24px;
+  margin-top:8px;
+}
+.page-logo-text {
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:400;
+  letter-spacing:0.04em;
+  color:var(--black);
+  line-height:1;
+}
+.page-logo-text span {
+  color:var(--accent);
+}
+
+/* MAIN MENU */
+.main-menu { display:flex; align-items:stretch; border-bottom:1px solid var(--light); }
+.main-menu > a {
+  font-family:var(--sans); font-size:18px; font-weight:500; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--black); text-decoration:none;
+  padding:12px 0; margin-right:32px;
+  border-bottom:2px solid transparent; position:relative; top:1px;
+  transition:color 0.15s; display:inline-block; white-space:nowrap;
+}
+.main-menu > a:hover { color:var(--gray); }
+.main-menu > a.active { border-bottom:2px solid var(--accent); color:var(--accent); }
+
+/* FILTER BAR */
+.filter-bar {
+  display:flex; align-items:baseline;
+  border-bottom:1px solid var(--light);
+  padding-top:10px; flex-wrap:wrap;
+}
+.filter-btn {
+  background:none; border:none; border-bottom:2px solid transparent;
+  padding:8px 0; margin-right:28px; font-family:var(--sans); font-size:17px;
+  font-weight:400; letter-spacing:0.04em; color:var(--gray);
+  cursor:pointer; position:relative; top:1px; transition:color 0.15s; white-space:nowrap;
+}
+.filter-btn:hover { color:var(--black); }
+.filter-btn.active { color:var(--black); border-bottom:2px solid var(--black); font-weight:500; }
+
+/* HOME — HERO */
+.home-hero {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  background:#0a0a0a;
+  margin:48px 48px 0;
+}
+.home-hero-main {
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#1e1e1e;
+  position:relative;
+  cursor:pointer;
+  grid-row: span 2;
+}
+.home-hero-main img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  filter:saturate(0.85);
+  transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.home-hero-main:hover img { transform:scale(1.04); }
+.home-hero-sub {
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:#1e1e1e;
+  cursor:pointer;
+}
+.home-hero-sub img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  filter:saturate(0.85);
+  transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.home-hero-sub:hover img { transform:scale(1.04); }
+
+/* HOME — STATEMENT */
+.home-statement {
+  padding:80px 48px 72px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+  border-bottom:1px solid var(--light);
+}
+.home-statement-headline {
+  font-family:var(--serif);
+  font-size:clamp(36px,5vw,64px);
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-0.01em;
+}
+.home-statement-headline em {
+  font-style:italic;
+  color:var(--accent);
+}
+.home-statement-body {
+  font-size:16px;
+  line-height:1.95;
+  color:var(--gray);
+  letter-spacing:0;
+  word-break:keep-all;
+}
+.home-statement-body strong {
+  color:var(--black);
+  font-weight:400;
+}
+
+/* HOME — GRID */
+.home-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:#0a0a0a;
+  margin-top:2px;
+  margin-left:48px;
+}
+.home-grid-item {
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#1e1e1e;
+  cursor:pointer;
+}
+.home-grid-item img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  filter:saturate(0.85);
+  transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.home-grid-item:hover img { transform:scale(1.06); }
+
+/* WORK GRID */
+.work-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:#0a0a0a;
+  margin-top:48px;
+  margin-left:48px;
+}
+.work-item {
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#1e1e1e;
+  cursor:pointer;
+  position:relative;
+}
+.work-item img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  filter:saturate(0.85);
+  transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.work-item:hover img { transform:scale(1.06); }
+.work-load-more {
+  display:flex;
+  justify-content:center;
+  margin:48px 0;
+}
+.work-load-more button {
+  background:none;
+  border:1px solid var(--light);
+  color:var(--gray);
+  font-size:13px;
+  letter-spacing:0.1em;
+  padding:12px 40px;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.work-load-more button:hover {
+  border-color:var(--black);
+  color:var(--black);
+}
+
+/* SERVICE */
+.service-panel { display:none; }
+.service-panel.active { display:block; }
+
+.service-filter-bar {
+  display:flex; align-items:baseline;
+  border-bottom:1px solid var(--light);
+  padding-top:10px;
+}
+.service-filter-btn {
+  background:none; border:none; border-bottom:2px solid transparent;
+  padding:8px 0; margin-right:28px; font-family:var(--sans); font-size:17px;
+  font-weight:400; letter-spacing:0.04em; color:var(--gray);
+  cursor:pointer; position:relative; top:1px; transition:color 0.15s; white-space:nowrap;
+}
+.service-filter-btn:hover { color:var(--black); }
+.service-filter-btn.active { color:var(--black); border-bottom:2px solid var(--black); font-weight:500; }
+
+.service-content {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:600px;
+  margin:80px 48px 60px;
+  gap:80px;
+}
+.service-content-img {
+  overflow:hidden;
+  background:#1e1e1e;
+  aspect-ratio:4/5;
+}
+.service-content-img img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  filter:saturate(0.85);
+}
+.service-content-text {
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.service-eyebrow {
+  font-size:11px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+.service-title {
+  font-family:var(--serif);
+  font-size:clamp(32px,4vw,52px);
+  font-weight:400;
+  color:var(--black);
+  line-height:1.1;
+  margin-bottom:28px;
+}
+.service-desc {
+  font-size:16px;
+  line-height:1.95;
+  color:var(--gray);
+  letter-spacing:0;
+  word-break:keep-all;
+  margin-bottom:40px;
+}
+.service-select-title {
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--light);
+}
+.service-select-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:48px;
+}
+.service-select-list li {
+  font-size:16px;
+  color:var(--gray);
+  line-height:1.75;
+  letter-spacing:0;
+  word-break:keep-all;
+  padding-left:16px;
+  position:relative;
+}
+.service-select-list li::before {
+  content:'—';
+  position:absolute;
+  left:0;
+  color:var(--light);
+  font-size:11px;
+  top:2px;
+}
+.service-book-btn {
+  display:inline-block;
+  font-size:13px; font-weight:400;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--white);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:14px 36px;
+  background:var(--accent);
+  cursor:pointer;
+  transition:background 0.18s, color 0.18s;
+  text-decoration:none;
+  align-self:flex-start;
+}
+.service-book-btn:hover {
+  background:transparent;
+  color:var(--accent);
+}
+
+/* PACKAGE COMPARE */
+.package-compare {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  background:#0a0a0a;
+  margin:48px 48px 0;
+}
+.package-card {
+  background:#1a1a1a;
+  padding:48px 40px;
+  display:flex;
+  flex-direction:column;
+}
+.package-card-premium { border:1.5px solid rgba(200,240,40,0.3); }
+.package-card-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.package-eyebrow {
+  font-size:11px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.package-badge {
+  font-size:11px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:#111;
+  background:var(--accent);
+  padding:4px 12px;
+  border-radius:999px;
+}
+.package-title {
+  font-family:var(--serif);
+  font-size:clamp(32px,4vw,48px);
+  font-weight:400;
+  color:var(--black);
+  line-height:1;
+  margin-bottom:24px;
+}
+.package-desc {
+  font-size:16px;
+  line-height:1.9;
+  color:var(--gray);
+  letter-spacing:0;
+  word-break:keep-all;
+  margin-bottom:28px;
+}
+.package-divider { border:none; border-top:1px solid var(--light); margin-bottom:24px; }
+.package-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-bottom:40px;
+}
+.package-list li {
+  font-size:16px;
+  color:var(--gray);
+  line-height:1.7;
+  letter-spacing:0;
+  word-break:keep-all;
+  padding-left:16px;
+  position:relative;
+}
+.package-list li::before {
+  content:'—';
+  position:absolute;
+  left:0;
+  color:var(--light);
+  font-size:11px;
+  top:2px;
+}
+.package-btn {
+  display:block;
+  text-align:center;
+  font-size:13px; font-weight:400;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--black);
+  border:1px solid var(--black);
+  border-radius:999px;
+  padding:14px 0;
+  background:none;
+  cursor:pointer;
+  transition:background 0.18s, color 0.18s;
+  text-decoration:none;
+}
+.package-btn:hover { background:var(--black); color:var(--white); }
+.package-btn-filled {
+  background:var(--accent);
+  color:#111;
+  border-color:var(--accent);
+}
+.package-btn-filled:hover {
+  background:transparent;
+  color:var(--accent);
+}
+
+/* PACKAGE GALLERY */
+.package-gallery {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:#0a0a0a;
+  margin:80px 48px 0;
+}
+.package-gallery-item {
+  overflow:hidden;
+  background:#1e1e1e;
+  aspect-ratio:3/4;
+}
+.package-gallery-item img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  filter:saturate(0.85);
+  transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.package-gallery-item:hover img { transform:scale(1.06); }
+
+/* CONTACT */
+.contact-body { padding:40px 48px 0; }
+.contact-list { list-style:none; }
+.contact-list li {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0;
+  border-bottom:1px solid var(--light);
+}
+.contact-list li:first-child { border-top:1px solid var(--light); }
+.contact-label {
+  font-size:17px; font-weight:700;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--gray);
+}
+.contact-val {
+  font-size:16px;
+  color:var(--black);
+  text-decoration:none;
+  transition:color 0.15s;
+  letter-spacing:0;
+  word-break:keep-all;
+}
+.contact-val:hover { color:var(--gray); }
+.contact-cta {
+  margin:56px 0 0;
+  padding:56px 0;
+  border-top:1px solid var(--light);
+  text-align:center;
+}
+.contact-cta-text {
+  font-family:var(--serif);
+  font-size:clamp(28px,4vw,48px);
+  font-weight:400;
+  margin-bottom:32px;
+  line-height:1.2;
+}
+.contact-cta-text em { font-style:italic; color:var(--accent); }
+.contact-cta-btn {
+  display:inline-block;
+  font-size:13px; font-weight:400;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:#111;
+  background:var(--accent);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  padding:16px 48px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background 0.18s, color 0.18s;
+}
+.contact-cta-btn:hover { background:transparent; color:var(--accent); }
+
+/* GUIDE */
+.guide-body { padding:40px 48px 80px; max-width:780px; }
+.guide-section { margin-bottom:40px; padding-bottom:40px; border-bottom:1px solid var(--light); }
+.guide-section:last-child { border-bottom:none; }
+.guide-section-title {
+  font-size:17px; font-weight:700;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--gray); margin-bottom:16px;
+}
+.guide-table { width:100%; border-collapse:collapse; font-size:16px; }
+.guide-table tr { border-bottom:1px solid var(--light); }
+.guide-table tr:last-child { border-bottom:none; }
+.guide-table td {
+  padding:13px 0; font-weight:300;
+  line-height:1.6; vertical-align:top;
+  letter-spacing:0; word-break:keep-all;
+}
+.guide-table td:first-child {
+  width:160px;
+  color:var(--gray);
+  font-size:16px;
+  padding-right:24px;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position:fixed; inset:0;
+  background:rgba(17,17,17,0.96);
+  z-index:500;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.3s;
+  cursor:pointer;
+}
+.lightbox.open { opacity:1; pointer-events:all; }
+.lightbox img { max-width:80vw; max-height:88vh; object-fit:contain; cursor:default; }
+.lb-close {
+  position:absolute; top:28px; right:40px;
+  background:none; border:none;
+  font-size:11px; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(240,237,230,0.5); cursor:pointer; transition:color 0.15s;
+}
+.lb-close:hover { color:#f0ede6; }
+.lb-arrow {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:none; border:none;
+  color:rgba(240,237,230,0.4); cursor:pointer;
+  font-size:32px; padding:20px; transition:color 0.15s; line-height:1;
+}
+.lb-arrow:hover { color:#f0ede6; }
+.lb-prev { left:24px; }
+.lb-next { right:24px; }
+
+/* FOOTER */
+footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; }
+.footer-info {
+  font-size:11px;
+  color:var(--gray);
+  line-height:1.8;
+  letter-spacing:0;
+  word-break:keep-all;
+}
+
+/* FLOATING INSTAGRAM BUTTON */
+.ig-float {
+  position:fixed;
+  bottom:36px; right:36px;
+  z-index:400;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  cursor:pointer; text-decoration:none;
+  transition:transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.ig-float:hover { transform:translateY(-6px); }
+.ig-float-icon {
+  width:56px; height:56px;
+  background:var(--accent);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 16px rgba(200,240,40,0.25);
+}
+.ig-float-icon svg { width:26px; height:26px; }
+.ig-float-label {
+  font-size:12px; font-family:var(--sans);
+  letter-spacing:0.08em; color:#f0ede6;
+  white-space:nowrap;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+  .page-header { padding:24px 16px 0; }
+  .page-title { font-size:clamp(48px,14vw,80px); }
+  .page-title-row { margin-bottom:16px; }
+  .main-menu > a { margin-right:20px; font-size:13px; }
+
+  .filter-bar {
+    flex-wrap:nowrap;
+    overflow-x:auto; overflow-y:hidden;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-x;
+    padding-bottom:0;
+    padding-right:24px;
+  }
+  .filter-bar::-webkit-scrollbar { display:none; }
+  .filter-btn { white-space:nowrap; }
+
+  .home-hero { grid-template-columns:1fr; margin:24px 0 0; gap:2px; }
+  .home-hero-main { aspect-ratio:4/5; grid-row:auto; }
+  .home-hero-sub { aspect-ratio:4/3; }
+
+  .home-statement { grid-template-columns:1fr; gap:32px; padding:48px 16px; }
+
+  .home-grid { grid-template-columns:repeat(2,1fr); margin:2px 0 0; }
+  .home-grid-item { aspect-ratio:1/1; }
+
+  .work-grid { grid-template-columns:repeat(2,1fr); margin:24px 0 0; }
+  .work-item { aspect-ratio:1/1; }
+
+  .service-content { grid-template-columns:1fr; margin:40px 16px 40px; gap:40px; }
+  .service-content-img { aspect-ratio:3/2; }
+
+  .package-compare {
+    display:flex; flex-direction:row;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    margin:24px 0 0; gap:2px; background:#0a0a0a;
+  }
+  .package-compare::-webkit-scrollbar { display:none; }
+  .package-card {
+    flex:0 0 85vw; max-width:340px;
+    scroll-snap-align:start; padding:32px 20px;
+  }
+  .package-compare .package-card:first-child { margin-left:16px; }
+  .package-compare .package-card:last-child { margin-right:16px; }
+
+  .package-gallery { grid-template-columns:repeat(3,1fr); margin:24px 0 0; }
+  .package-gallery-item { aspect-ratio:1/1; }
+
+  .contact-body { padding:24px 16px 0; }
+  .guide-body { padding:24px 16px 60px; }
+
+  .ig-float { bottom:24px; right:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="page-header">
+    <div class="page-title-row">
+      <h1 class="page-title">Side<em>line</em>.</h1>
+      <button class="page-logo-btn" onclick="showPage('home')">
+        <div class="page-logo-text">Sideline<span>.</span>seoul</div>
+      </button>
+    </div>
+    <nav class="main-menu">
+      <a href="#" class="active" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('service');return false;">Service</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+      <a href="#" onclick="showPage('guide');return false;">Guide</a>
+    </nav>
+  </div>
+
+  <div class="home-hero">
+    <div class="home-hero-main" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=900&q=80" alt="">
+    </div>
+    <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80" alt="">
+    </div>
+    <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700&q=80" alt="">
+    </div>
+  </div>
+
+  <div class="home-statement">
+    <div class="home-statement-headline">
+      The split second<br>before it all<br><em>changes.</em>
+    </div>
+    <div class="home-statement-body">
+      경기장의 사이드라인에서 포착되는 찰나의 순간들. 승리의 포효, 패배의 침묵, 한계를 넘는 육체의 언어 — Sideline.seoul은 스포츠가 예술이 되는 그 경계에 있습니다.<br><br>
+      우리는 단순히 기록하지 않습니다. <strong>스포츠의 서사를 한 장의 이미지로 압축합니다.</strong>
+    </div>
+  </div>
+
+  <div class="home-grid">
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80" alt="">
+    </div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=700&q=80" alt="">
+    </div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?w=700&q=80" alt="">
+    </div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?w=700&q=80" alt="">
+    </div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=700&q=80" alt="">
+    </div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
+      <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80" alt="">
+    </div>
+  </div>
+
+  <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
+</div>
+
+<!-- WORK -->
+<div class="page" id="page-work">
+  <div class="page-header">
+    <div class="page-title-row">
+      <h1 class="page-title">Work</h1>
+      <button class="page-logo-btn" onclick="showPage('home')">
+        <div class="page-logo-text">Sideline<span>.</span>seoul</div>
+      </button>
+    </div>
+    <nav class="main-menu">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" class="active" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('service');return false;">Service</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+      <a href="#" onclick="showPage('guide');return false;">Guide</a>
+    </nav>
+    <div class="filter-bar">
+      <button class="filter-btn active" id="fb-all" onclick="filterWork('all')">All</button>
+      <button class="filter-btn" id="fb-boxing" onclick="filterWork('boxing')">Boxing</button>
+      <button class="filter-btn" id="fb-football" onclick="filterWork('football')">Football</button>
+      <button class="filter-btn" id="fb-lacrosse" onclick="filterWork('lacrosse')">Lacrosse</button>
+      <button class="filter-btn" id="fb-tennis" onclick="filterWork('tennis')">Tennis</button>
+      <button class="filter-btn" id="fb-portrait" onclick="filterWork('portrait')">Athlete Portrait</button>
+    </div>
+  </div>
+
+  <div class="work-grid" id="work-grid">
+    <!-- Boxing -->
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1544717305-996b815c338c?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?w=700&q=80" alt=""></div>
+
+    <!-- Football -->
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1508098682722-e99c643e7f0b?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700&q=80" alt=""></div>
+
+    <!-- Lacrosse -->
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1600077106724-946750eeaf3c?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?w=700&q=80" alt=""></div>
+
+    <!-- Tennis -->
+    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=700&q=80" alt=""></div>
+
+    <!-- Athlete Portrait -->
+    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1544717305-996b815c338c?w=700&q=80" alt=""></div>
+  </div>
+
+  <div class="work-load-more" id="work-load-more" style="display:none;">
+    <button onclick="loadMoreWork()">더보기</button>
+  </div>
+
+  <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
+</div>
+
+<!-- SERVICE -->
+<div class="page" id="page-service">
+  <div class="page-header">
+    <div class="page-title-row">
+      <h1 class="page-title">Service</h1>
+      <button class="page-logo-btn" onclick="showPage('home')">
+        <div class="page-logo-text">Sideline<span>.</span>seoul</div>
+      </button>
+    </div>
+    <nav class="main-menu">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" class="active" onclick="showPage('service');return false;">Service</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+      <a href="#" onclick="showPage('guide');return false;">Guide</a>
+    </nav>
+    <div class="service-filter-bar" id="service-filter-bar">
+      <button class="service-filter-btn active" onclick="showServicePanel('team')" id="sf-team">Team / Club</button>
+      <span style="color:var(--light);font-size:18px;position:relative;top:1px;margin-left:28px;margin-right:28px;">|</span>
+      <button class="service-filter-btn" onclick="showServicePanel('athlete')" id="sf-athlete">Athlete Portrait</button>
+    </div>
+  </div>
+
+  <!-- TEAM / CLUB SERVICE -->
+  <div class="service-panel active" id="sp-team">
+    <div class="service-content">
+      <div class="service-content-img">
+        <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=900&q=80" alt="">
+      </div>
+      <div class="service-content-text">
+        <div class="service-eyebrow">Team · Club · League</div>
+        <h2 class="service-title">Game Day<br>Coverage</h2>
+        <p class="service-desc">
+          아마추어든 프로든, 경기는 언제나 진지합니다. 팀의 땀과 전략, 감정의 흐름을 담아내는 풀타임 현장 촬영 서비스입니다.<br><br>
+          경기 전 워밍업부터 최후의 휘슬까지 — 선수들이 놓쳤을 결정적인 장면들을 사이드라인에서 포착합니다. 팀의 기록이 예술 작품으로 변하는 순간을 함께 만들어갑니다.
+        </p>
+        <div class="service-select-title">Select Point.</div>
+        <ul class="service-select-list">
+          <li>풀타임 현장 동행 — 워밍업, 킥오프, 하프타임, 엔딩까지 경기 전체를 빠짐없이 기록합니다.</li>
+          <li>팀과 개인의 극적인 순간을 동시에 포착하는 2인 이상의 촬영 시스템을 제공합니다.</li>
+          <li>경기 종료 후 48시간 이내 하이라이트 컷 선 전달, 전체 보정본은 7일 이내 납품합니다.</li>
+          <li>리그 단위 시즌 계약 가능 — 경기 수에 따른 별도 패키지를 협의합니다.</li>
+        </ul>
+        <a class="service-book-btn" href="#" onclick="showPage('contact');return false;">문의하기</a>
+      </div>
+    </div>
+
+    <div class="package-compare">
+      <div class="package-card">
+        <div class="package-card-header">
+          <span class="package-eyebrow">Game Day</span>
+        </div>
+        <h2 class="package-title">Standard</h2>
+        <p class="package-desc" style="padding-bottom:48px;">단일 경기 또는 단발성 이벤트를 위한 기본 커버리지 패키지입니다.</p>
+        <div class="package-divider"></div>
+        <div class="service-select-title" style="margin-bottom:16px;margin-top:auto;">포함 사항</div>
+        <ul class="package-list">
+          <li>1인 사진작가 현장 동행 (최대 3시간)</li>
+          <li>하이라이트 컷 20장 보정 납품</li>
+          <li>전체 원본 파일 제공</li>
+          <li>SNS 용도 사용 라이선스 포함</li>
+        </ul>
+        <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;">문의하기</a>
+      </div>
+
+      <div class="package-card package-card-premium">
+        <div class="package-card-header">
+          <span class="package-eyebrow">Game Day</span>
+          <span class="package-badge">Full Coverage</span>
+        </div>
+        <h2 class="package-title">Premium</h2>
+        <p class="package-desc">경기 전체를 2인 이상 팀이 다각도로 커버하는 하이엔드 패키지입니다. 리그·클럽·브랜드 아카이브에 최적화되어 있습니다.</p>
+        <div class="package-divider"></div>
+        <div class="service-select-title" style="margin-bottom:16px;">포함 사항</div>
+        <ul class="package-list">
+          <li>2인 사진작가 팀 구성 (경기 전·후 포함 풀타임)</li>
+          <li>하이라이트 컷 50장 이상 보정 납품</li>
+          <li>전체 원본 파일 + RAW 제공</li>
+          <li>경기 후 24시간 이내 SNS 즉시 활용 컷 우선 전달</li>
+          <li>상업적 사용 라이선스 포함 (광고·인쇄물 등)</li>
+        </ul>
+        <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;">문의하기</a>
+      </div>
+    </div>
+
+    <div class="package-gallery">
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1508098682722-e99c643e7f0b?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=700&q=80" alt=""></div>
+    </div>
+  </div>
+
+  <!-- ATHLETE PORTRAIT SERVICE -->
+  <div class="service-panel" id="sp-athlete">
+    <div class="service-content">
+      <div class="service-content-img">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80" alt="">
+      </div>
+      <div class="service-content-text">
+        <div class="service-eyebrow">Athlete · Individual</div>
+        <h2 class="service-title">Athlete<br>Portrait</h2>
+        <p class="service-desc">
+          선수의 종목과 개성, 커리어의 서사를 한 장의 이미지에 응축시킵니다. 에이전시 프로필부터 개인 브랜딩, SNS 피드 구축까지 — 선수로서의 당신을 가장 강렬하게 보여주는 작업입니다.<br><br>
+          사전 미팅을 통해 당신이 전달하고 싶은 이미지를 함께 설계합니다. 경기복, 사복, 아웃도어 등 다양한 컨셉을 하나의 세션에서 소화합니다.
+        </p>
+        <div class="service-select-title">Select Point.</div>
+        <ul class="service-select-list">
+          <li>촬영 전 1:1 컨셉 미팅 — 종목, 포지션, 목표에 맞는 비주얼 방향성을 함께 결정합니다.</li>
+          <li>스튜디오 또는 실외 로케이션 선택 가능 — 원하는 무드에 따라 최적의 환경을 제안합니다.</li>
+          <li>보정본 납품 후 피드백 1회 무제한 수정 반영을 보장합니다.</li>
+        </ul>
+        <a class="service-book-btn" href="#" onclick="showPage('contact');return false;">예약하기</a>
+      </div>
+    </div>
+
+    <div class="package-compare">
+      <div class="package-card">
+        <div class="package-card-header">
+          <span class="package-eyebrow">Portrait</span>
+        </div>
+        <h2 class="package-title">Essential</h2>
+        <p class="package-desc" style="padding-bottom:24px;">에이전시 제출용, SNS 프로필 등 핵심 컷이 필요한 선수를 위한 효율적인 세션입니다.</p>
+        <div class="package-divider"></div>
+        <div class="service-select-title" style="margin-bottom:16px;margin-top:auto;">포함 사항</div>
+        <ul class="package-list">
+          <li>촬영 세션 최대 1시간 (컨셉 1–2개)</li>
+          <li>보정본 10장 제공</li>
+          <li>전체 원본 파일 제공</li>
+        </ul>
+        <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;">예약하기</a>
+      </div>
+
+      <div class="package-card package-card-premium">
+        <div class="package-card-header">
+          <span class="package-eyebrow">Portrait</span>
+          <span class="package-badge">Full Session</span>
+        </div>
+        <h2 class="package-title">Signature</h2>
+        <p class="package-desc">선수의 모든 면을 담아내는 풀데이 아카이브 세션. 에이전시 프로필·브랜드 협찬·미디어 기고 등 다목적으로 활용 가능합니다.</p>
+        <div class="package-divider"></div>
+        <div class="service-select-title" style="margin-bottom:16px;">포함 사항</div>
+        <ul class="package-list">
+          <li>촬영 세션 최대 3시간 (컨셉 3–5개)</li>
+          <li>보정본 30장 + 추가 SNS 크롭 컷 제공</li>
+          <li>전체 원본 RAW 파일 제공</li>
+          <li>상업적 사용 라이선스 포함</li>
+          <li>촬영 후 비주얼 디렉팅 리포트 제공</li>
+        </ul>
+        <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;">예약하기</a>
+      </div>
+    </div>
+
+    <div class="package-gallery">
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1544717305-996b815c338c?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=700&q=80" alt=""></div>
+      <div class="package-gallery-item"><img src="https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?w=700&q=80" alt=""></div>
+    </div>
+  </div>
+
+  <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+  <div class="page-header">
+    <div class="page-title-row">
+      <h1 class="page-title">Contact</h1>
+      <button class="page-logo-btn" onclick="showPage('home')">
+        <div class="page-logo-text">Sideline<span>.</span>seoul</div>
+      </button>
+    </div>
+    <nav class="main-menu">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('service');return false;">Service</a>
+      <a href="#" class="active" onclick="showPage('contact');return false;">Contact</a>
+      <a href="#" onclick="showPage('guide');return false;">Guide</a>
+    </nav>
+  </div>
+
+  <div class="contact-body">
+    <div style="width:100%;height:480px;margin-bottom:40px;">
+      <iframe src="https://map.kakao.com/link/map/Sideline.seoul,37.498428,127.127065" style="width:100%;height:100%;border:none;display:block;" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <ul class="contact-list">
+      <li>
+        <span class="contact-label">Instagram</span>
+        <a class="contact-val" href="https://instagram.com/sideline.seoul" target="_blank">@sideline.seoul</a>
+      </li>
+      <li>
+        <span class="contact-label">E-Mail</span>
+        <a class="contact-val" href="mailto:hello@sideline.seoul">hello@sideline.seoul</a>
+      </li>
+      <li>
+        <span class="contact-label">KakaoTalk</span>
+        <a class="contact-val" href="#">카카오톡 채널 문의</a>
+      </li>
+      <li>
+        <span class="contact-label">Location</span>
+        <span class="contact-val">서울시 송파구 중대로20길 12, 지하 1층</span>
+      </li>
+      <li>
+        <span class="contact-label">Response</span>
+        <span class="contact-val" style="text-align:right;">
+          48시간 이내 회신<br>
+          <span style="font-size:13px;color:var(--gray);">주말·공휴일 포함 최대 72시간</span>
+        </span>
+      </li>
+    </ul>
+
+    <div class="contact-cta">
+      <div class="contact-cta-text">
+        경기가 있는 날,<br>우리도 <em>사이드라인</em>에 있습니다.
+      </div>
+      <a class="contact-cta-btn" href="mailto:hello@sideline.seoul">촬영 문의하기</a>
+    </div>
+  </div>
+
+  <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
+</div>
+
+<!-- GUIDE -->
+<div class="page" id="page-guide">
+  <div class="page-header">
+    <div class="page-title-row">
+      <h1 class="page-title">Guide</h1>
+      <button class="page-logo-btn" onclick="showPage('home')">
+        <div class="page-logo-text">Sideline<span>.</span>seoul</div>
+      </button>
+    </div>
+    <nav class="main-menu">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('service');return false;">Service</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+      <a href="#" class="active" onclick="showPage('guide');return false;">Guide</a>
+    </nav>
+  </div>
+
+  <div class="guide-body">
+    <div class="guide-section">
+      <div class="guide-section-title">경기 촬영 예약</div>
+      <table class="guide-table">
+        <tr><td>01</td><td>경기 정보 전달 (종목, 일시, 장소, 인원, 목적)</td></tr>
+        <tr><td>02</td><td>이메일 또는 카카오톡 채널로 문의 접수</td></tr>
+        <tr><td>03</td><td>패키지 협의 및 최종 견적 안내</td></tr>
+        <tr><td>04</td><td>예약금 입금 후 일정 확정</td></tr>
+        <tr><td>05</td><td>경기 당일 사이드라인 미팅 후 촬영 시작</td></tr>
+        <tr><td>06</td><td>납품 (48시간 이내 하이라이트 선납품)</td></tr>
+      </table>
+    </div>
+    <div class="guide-section">
+      <div class="guide-section-title">선수 프로필 촬영 예약</div>
+      <table class="guide-table">
+        <tr><td>01</td><td>이메일 또는 카카오톡으로 문의 접수</td></tr>
+        <tr><td>02</td><td>1:1 사전 미팅 (컨셉·방향성 협의)</td></tr>
+        <tr><td>03</td><td>패키지 선택 및 예약금 안내</td></tr>
+        <tr><td>04</td><td>예약금 입금 후 촬영일 확정</td></tr>
+        <tr><td>05</td><td>촬영 당일 진행</td></tr>
+        <tr><td>06</td><td>보정본 납품 및 피드백 반영</td></tr>
+      </table>
+    </div>
+    <div class="guide-section">
+      <div class="guide-section-title">예약 안내</div>
+      <table class="guide-table">
+        <tr><td>운영 방식</td><td>Sideline.seoul은 사전 예약제로만 운영합니다. 당일 현장 섭외는 불가합니다.</td></tr>
+        <tr><td>예약 방법</td><td>이메일(hello@sideline.seoul), 카카오톡 채널을 통해 접수하실 수 있습니다.</td></tr>
+        <tr><td>예약금</td><td>총 촬영비의 30%를 선입금하셔야 예약이 확정됩니다.</td></tr>
+        <tr><td>중복 예약</td><td>동일 일정에 복수 문의가 들어올 경우, 예약금 선입금 순으로 우선 확정합니다.</td></tr>
+        <tr><td>잔액 결제</td><td>촬영 당일 현장 계좌이체 또는 사전 이체 모두 가능합니다.</td></tr>
+        <tr><td>파일 전달</td><td>Google Drive 링크로 전달합니다. 링크 유효 기간은 납품일로부터 60일입니다.</td></tr>
+      </table>
+    </div>
+    <div class="guide-section">
+      <div class="guide-section-title">취소 및 변경</div>
+      <table class="guide-table">
+        <tr><td>일정 변경</td><td>촬영일 기준 7일 전까지 1회 변경 가능합니다. 이후에는 불가합니다.</td></tr>
+        <tr><td>환불</td><td>예약금은 원칙적으로 환불되지 않습니다.</td></tr>
+        <tr><td>기상·천재지변</td><td>불가피한 야외 촬영 취소의 경우 예약금 환불 또는 일정 재조율이 가능합니다.</td></tr>
+        <tr><td>당일 취소</td><td>고객 사유에 의한 당일 취소 및 노쇼는 전액 청구됩니다.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">Close ✕</button>
+  <button class="lb-arrow lb-prev" onclick="event.stopPropagation();moveLight(-1)">&#8592;</button>
+  <img src="" id="lb-img" alt="" onclick="event.stopPropagation()">
+  <button class="lb-arrow lb-next" onclick="event.stopPropagation();moveLight(1)">&#8594;</button>
+</div>
+
+<!-- FLOATING INSTAGRAM -->
+<a class="ig-float" href="https://instagram.com/sideline.seoul" target="_blank">
+  <div class="ig-float-icon">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#111" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" stroke="#111" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="#111"/>
+    </svg>
+  </div>
+  <span class="ig-float-label">@sideline.seoul</span>
+</a>
+
+<script>
+/* ── PAGE ── */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.toggle('active', p.id === 'page-' + id);
+  });
+  window.location.hash = id;
+  window.scrollTo(0, 0);
+}
+
+(function() {
+  var hash = window.location.hash.replace('#', '');
+  var valid = ['home','work','service','contact','guide'];
+  if (hash && valid.indexOf(hash) !== -1) showPage(hash);
+  else showPage('home');
+})();
+
+/* ── WORK FILTER ── */
+var WORK_PAGE_SIZE = 18;
+var workCurrentCat = 'all';
+var workShuffled = [];
+
+(function() {
+  var grid = document.getElementById('work-grid');
+  if (!grid) return;
+  var items = Array.from(grid.querySelectorAll('.work-item'));
+
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
+  }
+  shuffle(items);
+  workShuffled = items;
+
+  items.forEach(function(item) { item.style.display = 'none'; });
+  var initial = workShuffled.slice(0, WORK_PAGE_SIZE);
+  initial.forEach(function(item) { item.style.display = ''; });
+
+  var btn = document.getElementById('work-load-more');
+  if (btn) btn.style.display = workShuffled.length > WORK_PAGE_SIZE ? 'flex' : 'none';
+})();
+
+function loadMoreWork() {
+  var filtered = workShuffled.filter(function(item) {
+    return workCurrentCat === 'all' || item.dataset.cat === workCurrentCat;
+  });
+  var shown = filtered.filter(function(item) { return item.style.display !== 'none'; }).length;
+  filtered.slice(shown, shown + WORK_PAGE_SIZE).forEach(function(item) { item.style.display = ''; });
+  var btn = document.getElementById('work-load-more');
+  if (btn) btn.style.display = (shown + WORK_PAGE_SIZE) < filtered.length ? 'flex' : 'none';
+}
+
+function filterWork(cat) {
+  workCurrentCat = cat;
+  workShuffled.forEach(function(item) { item.style.display = 'none'; });
+  var filtered = workShuffled.filter(function(item) {
+    return cat === 'all' || item.dataset.cat === cat;
+  });
+  filtered.slice(0, WORK_PAGE_SIZE).forEach(function(item) { item.style.display = ''; });
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.id === 'fb-' + cat);
+  });
+  var loadBtn = document.getElementById('work-load-more');
+  if (loadBtn) loadBtn.style.display = filtered.length > WORK_PAGE_SIZE ? 'flex' : 'none';
+}
+
+/* ── SERVICE FILTER ── */
+function showServicePanel(id) {
+  ['team','athlete'].forEach(function(s) {
+    document.getElementById('sp-' + s).classList.toggle('active', s === id);
+    document.getElementById('sf-' + s).classList.toggle('active', s === id);
+  });
+}
+
+/* ── LIGHTBOX ── */
+var lbImages = [], lbIndex = 0;
+function openLightbox(src) {
+  var activePage = document.querySelector('.page.active');
+  var imgs = activePage.querySelectorAll('.home-grid-item img, .home-hero-main img, .home-hero-sub img, .work-item img, .package-gallery-item img');
+  lbImages = Array.from(imgs).map(img => img.src);
+  lbIndex = lbImages.indexOf(src);
+  if (lbIndex === -1) lbIndex = 0;
+  document.getElementById('lb-img').src = lbImages[lbIndex];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function moveLight(dir) {
+  lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+  document.getElementById('lb-img').src = lbImages[lbIndex];
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') moveLight(-1);
+  if (e.key === 'ArrowRight') moveLight(1);
+});
+
+/* ── LIGHTBOX SWIPE ── */
+(function() {
+  var lb = document.getElementById('lightbox');
+  var touchStartX = 0;
+  lb.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  }, { passive:true });
+  lb.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - e.touches[0]?.clientY || 0;
+    if (Math.abs(dx) > 40) moveLight(dx < 0 ? 1 : -1);
+    else if (Math.abs(dx) < 10) closeLightbox();
+  }, { passive:true });
+})();
+</script>
+</body>
+</html>
