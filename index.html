@@ -840,6 +840,7 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
     <nav class="main-menu">
       <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" class="active" onclick="showPage('work');return false;">Work</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
@@ -849,6 +850,7 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
       <button class="filter-btn active" id="fb-all" onclick="filterWork('all')">All</button>
       <button class="filter-btn" id="fb-boxing" onclick="filterWork('boxing')">Boxing</button>
       <button class="filter-btn" id="fb-football" onclick="filterWork('football')">Football</button>
+      <button class="filter-btn" id="fb-futsal" onclick="filterWork('futsal')">Futsal</button>
       <button class="filter-btn" id="fb-lacrosse" onclick="filterWork('lacrosse')">Lacrosse</button>
       <button class="filter-btn" id="fb-tennis" onclick="filterWork('tennis')">Tennis</button>
       <button class="filter-btn" id="fb-portrait" onclick="filterWork('portrait')">Athlete Portrait</button>
@@ -857,40 +859,46 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 
   <div class="work-grid" id="work-grid">
     <!-- Boxing -->
-    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1544717305-996b815c338c?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_1.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_2.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_3.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_4.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_5.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_6.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_7.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_8.jpg" alt=""></div>
+    <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_9.jpg" alt=""></div>
 
     <!-- Football -->
-    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1508098682722-e99c643e7f0b?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="images/football/foot_1.jpg" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="images/football/foot_2.jpg" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="images/football/foot_3.jpg" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="images/football/foot_4.jpg" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="images/football/foot_5.jpg" alt=""></div>
+    <div class="work-item" data-cat="football" onclick="openLightbox(this.querySelector('img').src)"><img src="images/football/foot_6.jpg" alt=""></div>
+
+    <!-- Futsal -->
+    <div class="work-item" data-cat="futsal" onclick="openLightbox(this.querySelector('img').src)"><img src="images/futsal/fut_1.jpg" alt=""></div>
+    <div class="work-item" data-cat="futsal" onclick="openLightbox(this.querySelector('img').src)"><img src="images/futsal/fut_2.jpg" alt=""></div>
+    <div class="work-item" data-cat="futsal" onclick="openLightbox(this.querySelector('img').src)"><img src="images/futsal/fut_3.jpg" alt=""></div>
+    <div class="work-item" data-cat="futsal" onclick="openLightbox(this.querySelector('img').src)"><img src="images/futsal/fut_4.jpg" alt=""></div>
+    <div class="work-item" data-cat="futsal" onclick="openLightbox(this.querySelector('img').src)"><img src="images/futsal/fut_5.jpg" alt=""></div>
+    <div class="work-item" data-cat="futsal" onclick="openLightbox(this.querySelector('img').src)"><img src="images/futsal/fut_6.jpg" alt=""></div>
 
     <!-- Lacrosse -->
-    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1600077106724-946750eeaf3c?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?w=700&q=80" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="images/lacrosse/lac_1.jpg" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="images/lacrosse/lac_2.jpg" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="images/lacrosse/lac_3.jpg" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="images/lacrosse/lac_4.jpg" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="images/lacrosse/lac_5.jpg" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="images/lacrosse/lac_6.jpg" alt=""></div>
+    <div class="work-item" data-cat="lacrosse" onclick="openLightbox(this.querySelector('img').src)"><img src="images/lacrosse/lac_7.jpg" alt=""></div>
 
-    <!-- Tennis -->
-    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1511067007398-7e4b90cfa4bc?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=700&q=80" alt=""></div>
+    <!-- Tennis (임시 — 사진 업로드 후 교체) -->
+    <div class="work-item" data-cat="tennis" onclick="openLightbox(this.querySelector('img').src)"><img src="images/tennis/ten_1.jpg" alt=""></div>
 
-    <!-- Athlete Portrait -->
-    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=700&q=80" alt=""></div>
-    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="https://images.unsplash.com/photo-1544717305-996b815c338c?w=700&q=80" alt=""></div>
+    <!-- Athlete Portrait (임시 — 사진 업로드 후 교체) -->
+    <div class="work-item" data-cat="portrait" onclick="openLightbox(this.querySelector('img').src)"><img src="images/portrait/por_1.jpg" alt=""></div>
   </div>
 
   <div class="work-load-more" id="work-load-more" style="display:none;">
