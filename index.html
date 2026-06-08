@@ -39,10 +39,10 @@ body {
 .page-logo-btn { background:none; border:none; cursor:pointer; }
 .page-logo-text { font-family:var(--serif); font-size:22px; font-weight:400; letter-spacing:0.04em; color:var(--black); line-height:1; }
 .page-logo-text span { color:var(--accent); }
-.page-logo-large { font-family:var(--serif); font-size:clamp(48px,8vw,96px); font-weight:400; line-height:1; letter-spacing:-0.01em; color:var(--black); }
+.page-logo-large { font-family:var(--serif); font-size:clamp(64px,10vw,120px); font-weight:400; line-height:1; letter-spacing:-0.01em; color:var(--black); }
 .page-logo-large em { font-style:italic; color:var(--accent); }
 .page-title-section { padding:40px 48px 0; }
-.page-title { font-family:var(--serif); font-size:clamp(64px,10vw,120px); font-weight:400; line-height:1; letter-spacing:-0.01em; }
+.page-title { font-family:var(--serif); font-size:clamp(32px,4.5vw,56px); font-weight:400; line-height:1; letter-spacing:-0.01em; }
 .page-title em { font-style:italic; color:var(--accent); }
 
 
@@ -863,7 +863,7 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
   </div>
   <div class="page-title-section">
-    <h1 class="page-title">Work</h1>
+    <h1 class="page-title" id="work-page-title">All</h1>
   </div>
 
   <div class="work-grid" id="work-grid">
@@ -1392,6 +1392,15 @@ function filterWork(cat) {
   });
   var loadBtn = document.getElementById('work-load-more');
   if (loadBtn) loadBtn.style.display = filtered.length > WORK_PAGE_SIZE ? 'flex' : 'none';
+
+  var titleEl = document.getElementById('work-page-title');
+  if (titleEl) {
+    var labels = {
+      'all': 'All', 'boxing': 'Boxing', 'football': 'Football',
+      'futsal': 'Futsal', 'lacrosse': 'Lacrosse', 'tennis': 'Tennis', 'portrait': 'Athlete Portrait'
+    };
+    titleEl.textContent = labels[cat] || cat;
+  }
 }
 
 /* ── SERVICE FILTER ── */
