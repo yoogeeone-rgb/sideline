@@ -93,12 +93,10 @@ body {
   margin:48px 48px 0;
 }
 .home-hero-main {
-  aspect-ratio:3/4;
   overflow:hidden;
   background:#1e1e1e;
   position:relative;
   cursor:pointer;
-  grid-row: span 2;
 }
 .home-hero-main img {
   width:100%; height:100%;
@@ -107,11 +105,17 @@ body {
   transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 .home-hero-main:hover img { transform:scale(1.04); }
+.home-hero-right {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
 .home-hero-sub {
-  aspect-ratio:4/3;
+  flex:1;
   overflow:hidden;
   background:#1e1e1e;
   cursor:pointer;
+  min-height:0;
 }
 .home-hero-sub img {
   width:100%; height:100%;
@@ -793,13 +797,15 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 
   <div class="home-hero">
     <div class="home-hero-main" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=900&q=80" alt="">
+      <img src="main_1.jpeg" alt="">
     </div>
-    <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80" alt="">
-    </div>
-    <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700&q=80" alt="">
+    <div class="home-hero-right">
+      <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="main_3.jpg" alt="">
+      </div>
+      <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="main_2.jpg" alt="">
+      </div>
     </div>
   </div>
 
@@ -813,25 +819,13 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
   </div>
 
-  <div class="home-grid">
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80" alt="">
-    </div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=700&q=80" alt="">
-    </div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?w=700&q=80" alt="">
-    </div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1543351611-58f69d7c1781?w=700&q=80" alt="">
-    </div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=700&q=80" alt="">
-    </div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80" alt="">
-    </div>
+  <div class="home-grid" id="home-grid">
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_4.jpg" alt=""></div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_5.jpg" alt=""></div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_6.jpg" alt=""></div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_7.jpg" alt=""></div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_8.jpg" alt=""></div>
+    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_9.jpg" alt=""></div>
   </div>
 
   <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
@@ -1111,9 +1105,6 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     <div style="width:100%;height:480px;margin-bottom:40px;">
       <iframe src="https://map.kakao.com/link/map/Sideline.seoul,37.498428,127.127065" style="width:100%;height:100%;border:none;display:block;" allowfullscreen loading="lazy"></iframe>
     </div>
-    <div style="width:100%;height:480px;margin-bottom:40px;">
-      <iframe src="https://map.kakao.com/link/map/Sideline.seoul,37.498428,127.127065" style="width:100%;height:100%;border:none;display:block;" allowfullscreen loading="lazy"></iframe>
-    </div>
     <ul class="contact-list">
       <li>
         <span class="contact-label">Instagram</span>
@@ -1325,6 +1316,18 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 </a>
 
 <script>
+/* ── HOME GRID SHUFFLE ── */
+(function() {
+  var grid = document.getElementById('home-grid');
+  if (!grid) return;
+  var items = Array.from(grid.querySelectorAll('.home-grid-item'));
+  for (var i = items.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    grid.insertBefore(items[j], items[i]);
+    var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+  }
+})();
+
 /* ── PAGE ── */
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => {
