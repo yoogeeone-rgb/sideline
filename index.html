@@ -692,6 +692,20 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 
 
 /* ABOUT */
+.about-statement {
+  padding:56px 48px 0;
+  max-width:900px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+.about-statement p {
+  font-size:17px;
+  line-height:2;
+  color:var(--gray);
+  letter-spacing:0;
+  word-break:keep-all;
+}
 .about-grid {
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1230,6 +1244,12 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     <h1 class="page-title">About <em>Sideline</em></h1>
   </div>
 
+  <div class="about-statement">
+    <p>스포츠의 진짜 드라마는 경기장 안과 밖이 교차하는 가장 치열한 경계선에서 완성됩니다.</p>
+    <p>스포츠 촬영팀 sideline은 그 이름처럼, 언제나 경기장의 사이드라인에 밀착하여 가장 날것의 순간을 포착합니다. 승리를 향해 질주하는 선수의 움직임부터 찰나의 판단이 오가는 극적인 순간까지, 화려한 연출을 배제하고 현장의 공기와 선수의 진짜 모습을 정직하게 담아내는 것에 집중합니다.</p>
+    <p>단순히 멀리서 지켜보는 제3자의 시선이 아닙니다. 가장 가까운 곳에서 함께 호흡하고 치열하게 기록하는 동반자로서 sideline이 당신의 위대한 타임라인을 남기겠습니다.</p>
+  </div>
+
   <div class="about-grid">
 
     <!-- 유지원 -->
@@ -1363,6 +1383,8 @@ var workShuffled = [];
   }
   shuffle(items);
   workShuffled = items;
+  var grid = document.getElementById('work-grid');
+  workShuffled.forEach(function(item) { grid.appendChild(item); });
 
   items.forEach(function(item) { item.style.display = 'none'; });
   var initial = workShuffled.slice(0, WORK_PAGE_SIZE);
@@ -1384,7 +1406,11 @@ function loadMoreWork() {
 
 function filterWork(cat) {
   workCurrentCat = cat;
-  if (cat === 'all') shuffle(workShuffled);
+  var grid = document.getElementById('work-grid');
+  if (cat === 'all') {
+    shuffle(workShuffled);
+    workShuffled.forEach(function(item) { grid.appendChild(item); });
+  }
   workShuffled.forEach(function(item) { item.style.display = 'none'; });
   var filtered = workShuffled.filter(function(item) {
     return cat === 'all' || item.dataset.cat === cat;
