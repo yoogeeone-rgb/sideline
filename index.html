@@ -128,18 +128,15 @@ body {
 /* HOME — STATEMENT */
 .home-statement {
   padding:80px 48px 72px;
-  display:flex;
-  flex-direction:column;
-  gap:32px;
   border-bottom:1px solid var(--light);
-  max-width:860px;
 }
 .home-statement-headline {
   font-family:var(--serif);
-  font-size:clamp(36px,5vw,64px);
+  font-size:clamp(32px,4.5vw,58px);
   font-weight:400;
   line-height:1.1;
   letter-spacing:-0.01em;
+  text-align:left;
 }
 .home-statement-headline em {
   font-style:italic;
@@ -151,6 +148,8 @@ body {
   color:var(--gray);
   letter-spacing:0;
   word-break:keep-all;
+  max-width:480px;
+  text-align:right;
 }
 .home-statement-body strong {
   color:var(--black);
@@ -792,57 +791,17 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 </head>
 <body>
 
-<!-- HOME -->
-<div class="page active" id="page-home">
-  <div class="page-header">
-    <div class="page-header-top">
-      <button class="page-logo-btn" onclick="showPage('home')">
-        <div class="page-logo-large">Side<em>line</em>.</div>
-      </button>
-    </div>
-    <nav class="main-menu">
-      <a href="#" onclick="showPage('about');return false;">About</a>
-      <a href="#" onclick="showPage('work');return false;">Work</a>
-      <a href="#" onclick="showPage('service');return false;">Service</a>
-      <a href="#" onclick="showPage('contact');return false;">Contact</a>
-      <a href="#" onclick="showPage('guide');return false;">Guide</a>
-    </nav>
-  </div>
-
-
-  <div class="home-statement">
-    <div class="home-statement-headline">
-      The split second<br>before it all<br><em>changes.</em>
-    </div>
-    <div class="home-statement-body">
-      경기장의 사이드라인에서 포착되는 찰나의 순간들. 승리의 포효, 패배의 침묵, 한계를 넘는 육체의 언어<br>— Sideline.seoul은 스포츠가 예술이 되는 그 경계에 있습니다.<br><br>
-      우리는 단순히 기록하지 않습니다. <strong>스포츠의 서사를 한 장의 이미지로 압축합니다.</strong>
-    </div>
-  </div>
-
-  <div class="home-grid" id="home-grid">
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_4.jpg" alt=""></div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_5.jpg" alt=""></div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_6.jpg" alt=""></div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_7.jpg" alt=""></div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_8.jpg" alt=""></div>
-    <div class="home-grid-item" onclick="openLightbox(this.querySelector('img').src)"><img src="main_9.jpg" alt=""></div>
-  </div>
-
-  <footer><div class="footer-info">Sideline.seoul · Sports Photography · Seoul, Korea · @sideline.seoul</div></footer>
-</div>
-
 <!-- WORK -->
 <div class="page" id="page-work">
   <div class="page-header">
     <div class="page-header-top">
-      <button class="page-logo-btn" onclick="showPage('home')">
+      <button class="page-logo-btn" onclick="showPage('work')">
         <div class="page-logo-large">Side<em>line</em>.</div>
       </button>
     </div>
     <nav class="main-menu">
-      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" class="active" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
       <a href="#" onclick="showPage('guide');return false;">Guide</a>
@@ -856,9 +815,6 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
       <button class="filter-btn" id="fb-tennis" onclick="filterWork('tennis')">Tennis</button>
       <button class="filter-btn" id="fb-portrait" onclick="filterWork('portrait')">Athlete Portrait</button>
     </div>
-  </div>
-  <div class="page-title-section">
-    <h1 class="page-title" id="work-page-title">All</h1>
   </div>
 
   <div class="work-grid" id="work-grid">
@@ -919,13 +875,13 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 <div class="page" id="page-service">
   <div class="page-header">
     <div class="page-header-top">
-      <button class="page-logo-btn" onclick="showPage('home')">
+      <button class="page-logo-btn" onclick="showPage('work')">
         <div class="page-logo-large">Side<em>line</em>.</div>
       </button>
     </div>
     <nav class="main-menu">
-      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" class="active" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
       <a href="#" onclick="showPage('guide');return false;">Guide</a>
@@ -1094,13 +1050,13 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 <div class="page" id="page-contact">
   <div class="page-header">
     <div class="page-header-top">
-      <button class="page-logo-btn" onclick="showPage('home')">
+      <button class="page-logo-btn" onclick="showPage('work')">
         <div class="page-logo-large">Side<em>line</em>.</div>
       </button>
     </div>
     <nav class="main-menu">
-      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" class="active" onclick="showPage('contact');return false;">Contact</a>
       <a href="#" onclick="showPage('guide');return false;">Guide</a>
@@ -1155,13 +1111,13 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 <div class="page" id="page-guide">
   <div class="page-header">
     <div class="page-header-top">
-      <button class="page-logo-btn" onclick="showPage('home')">
+      <button class="page-logo-btn" onclick="showPage('work')">
         <div class="page-logo-large">Side<em>line</em>.</div>
       </button>
     </div>
     <nav class="main-menu">
-      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
       <a href="#" class="active" onclick="showPage('guide');return false;">Guide</a>
@@ -1223,13 +1179,13 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 <div class="page" id="page-about">
   <div class="page-header">
     <div class="page-header-top">
-      <button class="page-logo-btn" onclick="showPage('home')">
+      <button class="page-logo-btn" onclick="showPage('work')">
         <div class="page-logo-large">Side<em>line</em>.</div>
       </button>
     </div>
     <nav class="main-menu">
-      <a href="#" class="active" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="#" class="active" onclick="showPage('about');return false;">About</a>
       <a href="#" onclick="showPage('service');return false;">Service</a>
       <a href="#" onclick="showPage('contact');return false;">Contact</a>
       <a href="#" onclick="showPage('guide');return false;">Guide</a>
@@ -1331,66 +1287,31 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
 </a>
 
 <script>
-/* ── HOME GRID SHUFFLE ── */
-(function() {
-  var grid = document.getElementById('home-grid');
-  if (!grid) return;
-  var items = Array.from(grid.querySelectorAll('.home-grid-item'));
-  for (var i = items.length - 1; i > 0; i--) {
+/* ── SHUFFLE ── */
+function shuffle(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
-    grid.insertBefore(items[j], items[i]);
-    var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
   }
-})();
-
-/* ── PAGE ── */
-function showPage(id) {
-  if (id === 'work' && workCurrentCat !== 'all') {
-    filterWork('all');
-  }
-  document.querySelectorAll('.page').forEach(p => {
-    p.classList.toggle('active', p.id === 'page-' + id);
-  });
-  window.location.hash = id;
-  window.scrollTo(0, 0);
+  return arr;
 }
-
-(function() {
-  var hash = window.location.hash.replace('#', '');
-  var valid = ['home','work','about','service','contact','guide'];
-  if (hash && valid.indexOf(hash) !== -1) showPage(hash);
-  else showPage('home');
-})();
 
 /* ── WORK FILTER ── */
 var WORK_PAGE_SIZE = 18;
 var workCurrentCat = 'all';
 var workShuffled = [];
 
-(function() {
+function initWorkGrid() {
   var grid = document.getElementById('work-grid');
   if (!grid) return;
   var items = Array.from(grid.querySelectorAll('.work-item'));
-
-  function shuffle(arr) {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
-    }
-    return arr;
-  }
   shuffle(items);
   workShuffled = items;
-  var grid = document.getElementById('work-grid');
-  workShuffled.forEach(function(item) { grid.appendChild(item); });
-
-  items.forEach(function(item) { item.style.display = 'none'; });
-  var initial = workShuffled.slice(0, WORK_PAGE_SIZE);
-  initial.forEach(function(item) { item.style.display = ''; });
-
+  workShuffled.forEach(function(item) { grid.appendChild(item); item.style.display = 'none'; });
+  workShuffled.slice(0, WORK_PAGE_SIZE).forEach(function(item) { item.style.display = ''; });
   var btn = document.getElementById('work-load-more');
   if (btn) btn.style.display = workShuffled.length > WORK_PAGE_SIZE ? 'flex' : 'none';
-})();
+}
 
 function loadMoreWork() {
   var filtered = workShuffled.filter(function(item) {
@@ -1420,14 +1341,6 @@ function filterWork(cat) {
   var loadBtn = document.getElementById('work-load-more');
   if (loadBtn) loadBtn.style.display = filtered.length > WORK_PAGE_SIZE ? 'flex' : 'none';
 
-  var titleEl = document.getElementById('work-page-title');
-  if (titleEl) {
-    var labels = {
-      'all': 'All', 'boxing': 'Boxing', 'football': 'Football',
-      'futsal': 'Futsal', 'lacrosse': 'Lacrosse', 'tennis': 'Tennis', 'portrait': 'Athlete Portrait'
-    };
-    titleEl.textContent = labels[cat] || cat;
-  }
 }
 
 /* ── SERVICE FILTER ── */
@@ -1442,8 +1355,8 @@ function showServicePanel(id) {
 var lbImages = [], lbIndex = 0;
 function openLightbox(src) {
   var activePage = document.querySelector('.page.active');
-  var imgs = activePage.querySelectorAll('.home-grid-item img, .home-hero-main img, .home-hero-sub img, .work-item img, .package-gallery-item img');
-  lbImages = Array.from(imgs).map(img => img.src);
+  var imgs = activePage.querySelectorAll('.work-item img, .package-gallery-item img');
+  lbImages = Array.from(imgs).map(function(img) { return img.src; });
   lbIndex = lbImages.indexOf(src);
   if (lbIndex === -1) lbIndex = 0;
   document.getElementById('lb-img').src = lbImages[lbIndex];
@@ -1458,27 +1371,40 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
-
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown', function(e) {
   if (!document.getElementById('lightbox').classList.contains('open')) return;
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') moveLight(-1);
   if (e.key === 'ArrowRight') moveLight(1);
 });
-
-/* ── LIGHTBOX SWIPE ── */
 (function() {
   var lb = document.getElementById('lightbox');
   var touchStartX = 0;
-  lb.addEventListener('touchstart', function(e) {
-    touchStartX = e.touches[0].clientX;
-  }, { passive:true });
+  lb.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive:true });
   lb.addEventListener('touchend', function(e) {
     var dx = e.changedTouches[0].clientX - touchStartX;
-    var dy = e.changedTouches[0].clientY - e.touches[0]?.clientY || 0;
     if (Math.abs(dx) > 40) moveLight(dx < 0 ? 1 : -1);
     else if (Math.abs(dx) < 10) closeLightbox();
   }, { passive:true });
+})();
+
+/* ── PAGE ── */
+function showPage(id) {
+  if (id === 'work') filterWork('all');
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.toggle('active', p.id === 'page-' + id);
+  });
+  window.location.hash = id;
+  window.scrollTo(0, 0);
+}
+
+/* ── INIT ── */
+initWorkGrid();
+(function() {
+  var hash = window.location.hash.replace('#', '');
+  var valid = ['work','about','service','contact','guide'];
+  if (hash && valid.indexOf(hash) !== -1) showPage(hash);
+  else showPage('work');
 })();
 </script>
 </body>
