@@ -128,11 +128,11 @@ body {
 /* HOME — STATEMENT */
 .home-statement {
   padding:80px 48px 72px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:end;
+  display:flex;
+  flex-direction:column;
+  gap:32px;
   border-bottom:1px solid var(--light);
+  max-width:860px;
 }
 .home-statement-headline {
   font-family:var(--serif);
@@ -809,26 +809,13 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </nav>
   </div>
 
-  <div class="home-hero">
-    <div class="home-hero-main" onclick="openLightbox(this.querySelector('img').src)">
-      <img src="main_1.jpeg" alt="">
-    </div>
-    <div class="home-hero-right">
-      <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="main_3.jpg" alt="">
-      </div>
-      <div class="home-hero-sub" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="main_2.jpg" alt="">
-      </div>
-    </div>
-  </div>
 
   <div class="home-statement">
     <div class="home-statement-headline">
       The split second<br>before it all<br><em>changes.</em>
     </div>
     <div class="home-statement-body">
-      경기장의 사이드라인에서 포착되는 찰나의 순간들. 승리의 포효, 패배의 침묵, 한계를 넘는 육체의 언어 — Sideline.seoul은 스포츠가 예술이 되는 그 경계에 있습니다.<br><br>
+      경기장의 사이드라인에서 포착되는 찰나의 순간들. 승리의 포효, 패배의 침묵, 한계를 넘는 육체의 언어<br>— Sideline.seoul은 스포츠가 예술이 되는 그 경계에 있습니다.<br><br>
       우리는 단순히 기록하지 않습니다. <strong>스포츠의 서사를 한 장의 이미지로 압축합니다.</strong>
     </div>
   </div>
