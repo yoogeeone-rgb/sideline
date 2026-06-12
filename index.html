@@ -41,6 +41,33 @@ body {
 .page-logo-text span { color:var(--accent); }
 .page-logo-large { font-family:var(--serif); font-size:clamp(64px,10vw,120px); font-weight:400; line-height:1; letter-spacing:-0.01em; color:var(--black); }
 .page-logo-large em { font-style:italic; color:var(--accent); }
+/* LANG TOGGLE */
+.lang-toggle {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:0 48px;
+  margin-top:20px;
+}
+.lang-btn {
+  background:none;
+  border:none;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--gray);
+  cursor:pointer;
+  padding:4px 0;
+  transition:color 0.15s;
+}
+.lang-btn.active { color:var(--accent); font-weight:500; }
+.lang-btn:hover { color:var(--black); }
+.lang-sep { color:var(--light); font-size:12px; }
+.t-en { display:none; }
+body.lang-en .t-ko { display:none; }
+body.lang-en .t-en { display:inline; }
+body.lang-en .t-en-block { display:block; }
+
 .page-title-section { padding:40px 48px 0; }
 .page-title { font-family:var(--serif); font-size:clamp(32px,4.5vw,56px); font-weight:400; line-height:1; letter-spacing:-0.01em; }
 .page-title em { font-style:italic; color:var(--accent); }
@@ -941,6 +968,11 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   <div class="page-title-section">
     <h1 class="page-title">Service</h1>
   </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="ko" onclick="setLang('ko')">KOR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">ENG</button>
+  </div>
 
   <!-- TEAM / CLUB SERVICE -->
   <div class="service-panel active" id="sp-team">
@@ -952,17 +984,19 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
         <div class="service-eyebrow">Team · Club · League</div>
         <h2 class="service-title">Game Day<br>Coverage</h2>
         <p class="service-desc">
-          아마추어든 프로든, 경기는 언제나 진지합니다. 팀의 땀과 전략, 감정의 흐름을 담아내는 풀타임 현장 촬영 서비스입니다.<br><br>
-          경기 전 워밍업부터 최후의 휘슬까지 — 선수들이 놓쳤을 결정적인 장면들을 사이드라인에서 포착합니다. 팀의 기록이 예술 작품으로 변하는 순간을 함께 만들어갑니다.
+          <span class="t-ko">아마추어든 프로든, 경기는 언제나 진지합니다. 팀의 땀과 전략, 감정의 흐름을 담아내는 풀타임 현장 촬영 서비스입니다.<br><br>
+          경기 전 워밍업부터 최후의 휘슬까지 — 선수들이 놓쳤을 결정적인 장면들을 사이드라인에서 포착합니다. 팀의 기록이 예술 작품으로 변하는 순간을 함께 만들어갑니다.</span>
+          <span class="t-en">Whether amateur or professional, every match is serious. This is a full-time on-site coverage service that captures a team's sweat, strategy, and the flow of emotion.<br><br>
+          From pre-match warm-ups to the final whistle — we capture the decisive moments players themselves might miss, right from the sideline. Together, we turn your team's record into a work of art.</span>
         </p>
         <div class="service-select-title">Select Point.</div>
         <ul class="service-select-list">
-          <li>풀타임 현장 동행 — 워밍업, 킥오프, 하프타임, 엔딩까지 경기 전체를 빠짐없이 기록합니다.</li>
-          <li>팀과 개인의 극적인 순간을 동시에 포착하는 2인 이상의 촬영 시스템을 제공합니다.</li>
-          <li>경기 종료 후 48시간 이내 하이라이트 컷 선 전달, 전체 보정본은 7일 이내 납품합니다.</li>
-          <li>리그 단위 시즌 계약 가능 — 경기 수에 따른 별도 패키지를 협의합니다.</li>
+          <li><span class="t-ko">풀타임 현장 동행 — 워밍업, 킥오프, 하프타임, 엔딩까지 경기 전체를 빠짐없이 기록합니다.</span><span class="t-en">Full-time on-site coverage — every part of the match is recorded, from warm-up and kickoff to halftime and the final moments.</span></li>
+          <li><span class="t-ko">팀과 개인의 극적인 순간을 동시에 포착하는 2인 이상의 촬영 시스템을 제공합니다.</span><span class="t-en">A two-or-more photographer system that captures dramatic moments for both the team and individual players simultaneously.</span></li>
+          <li><span class="t-ko">경기 종료 후 48시간 이내 하이라이트 컷 선 전달, 전체 보정본은 7일 이내 납품합니다.</span><span class="t-en">Highlight cuts delivered within 48 hours after the match, with the full edited set delivered within 7 days.</span></li>
+          <li><span class="t-ko">리그 단위 시즌 계약 가능 — 경기 수에 따른 별도 패키지를 협의합니다.</span><span class="t-en">Season-long contracts available for leagues — custom packages negotiated based on the number of matches.</span></li>
         </ul>
-        <a class="service-book-btn" href="#" onclick="showPage('contact');return false;">문의하기</a>
+        <a class="service-book-btn" href="#" onclick="showPage('contact');return false;"><span class="t-ko">문의하기</span><span class="t-en">Inquire</span></a>
       </div>
     </div>
 
@@ -972,20 +1006,18 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
           <span class="package-eyebrow">Game Day</span>
         </div>
         <h2 class="package-title">Standard</h2>
-        <p class="package-desc" style="padding-bottom:48px;">단일 경기 또는 단발성 이벤트를 위한 기본 커버리지 패키지입니다.</p>
+        <p class="package-desc" style="padding-bottom:48px;"><span class="t-ko">단일 경기 또는 단발성 이벤트를 위한 기본 커버리지 패키지입니다.</span><span class="t-en">A basic coverage package for a single match or one-off event.</span></p>
         <div class="package-divider"></div>
-        <div class="service-select-title" style="margin-bottom:16px;margin-top:auto;">포함 사항</div>
+        <div class="service-select-title" style="margin-bottom:16px;margin-top:auto;"><span class="t-ko">포함 사항</span><span class="t-en">What's Included</span></div>
         <ul class="package-list">
-          <li>1인 사진작가 현장 동행 (최대 3시간)</li>
-          <li>하이라이트 컷 20장 보정 납품</li>
-          <li>전체 원본 파일 제공</li>
-          <li>SNS 용도 사용 라이선스 포함</li>
-          <li>상업적 사용 시 별도 문의</li>
-          <li>촬영 시간 연장 및 사진작가 추가 옵션 가능 (별도 문의)</li>
-          <li>상업적 사용 시 별도 문의</li>
-          <li>촬영 시간 연장 및 사진작가 추가 옵션 가능 (별도 문의)</li>
+          <li><span class="t-ko">1인 사진작가 현장 동행 (최대 3시간)</span><span class="t-en">One photographer on site (up to 3 hours)</span></li>
+          <li><span class="t-ko">하이라이트 컷 20장 보정 납품</span><span class="t-en">20 edited highlight photos</span></li>
+          <li><span class="t-ko">전체 원본 파일 제공</span><span class="t-en">All original files provided</span></li>
+          <li><span class="t-ko">SNS 용도 사용 라이선스 포함</span><span class="t-en">License for social media use included</span></li>
+          <li><span class="t-ko">상업적 사용 시 별도 문의</span><span class="t-en">Commercial use available upon separate inquiry</span></li>
+          <li><span class="t-ko">촬영 시간 연장 및 사진작가 추가 옵션 가능 (별도 문의)</span><span class="t-en">Extended shooting time and additional photographers available (separate inquiry)</span></li>
         </ul>
-        <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;">문의하기</a>
+        <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;"><span class="t-ko">문의하기</span><span class="t-en">Inquire</span></a>
       </div>
 
       <div class="package-card package-card-premium">
@@ -994,17 +1026,17 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
           <span class="package-badge">Full Coverage</span>
         </div>
         <h2 class="package-title">Premium</h2>
-        <p class="package-desc">경기 전체를 2인 이상 팀이 다각도로 커버하는 하이엔드 패키지입니다. 리그·클럽·브랜드 아카이브에 최적화되어 있습니다.</p>
+        <p class="package-desc"><span class="t-ko">경기 전체를 2인 이상 팀이 다각도로 커버하는 하이엔드 패키지입니다. 리그·클럽·브랜드 아카이브에 최적화되어 있습니다.</span><span class="t-en">A high-end package where a team of two or more photographers covers the entire match from multiple angles. Optimized for league, club, and brand archives.</span></p>
         <div class="package-divider"></div>
-        <div class="service-select-title" style="margin-bottom:16px;">포함 사항</div>
+        <div class="service-select-title" style="margin-bottom:16px;"><span class="t-ko">포함 사항</span><span class="t-en">What's Included</span></div>
         <ul class="package-list">
-          <li>2인 사진작가 팀 구성 (경기 전·후 포함 풀타임)</li>
-          <li>하이라이트 컷 50장 이상 보정 납품</li>
-          <li>전체 원본 파일 제공</li>
-          <li>경기 후 24시간 이내 보도자료 및 SNS 활용 컷 우선 전달</li>
-          <li>상업적 사용 라이선스 포함 (광고·인쇄물 등)</li>
+          <li><span class="t-ko">2인 사진작가 팀 구성 (경기 전·후 포함 풀타임)</span><span class="t-en">Two-photographer team (full-time, including before and after the match)</span></li>
+          <li><span class="t-ko">하이라이트 컷 50장 이상 보정 납품</span><span class="t-en">50+ edited highlight photos</span></li>
+          <li><span class="t-ko">전체 원본 파일 제공</span><span class="t-en">All original files provided</span></li>
+          <li><span class="t-ko">경기 후 24시간 이내 보도자료 및 SNS 활용 컷 우선 전달</span><span class="t-en">Priority delivery of press and social media cuts within 24 hours after the match</span></li>
+          <li><span class="t-ko">상업적 사용 라이선스 포함 (광고·인쇄물 등)</span><span class="t-en">Commercial use license included (advertising, print, etc.)</span></li>
         </ul>
-        <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;">문의하기</a>
+        <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;"><span class="t-ko">문의하기</span><span class="t-en">Inquire</span></a>
       </div>
     </div>
   </div>
@@ -1019,16 +1051,18 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
         <div class="service-eyebrow">Athlete · Individual</div>
         <h2 class="service-title">Athlete<br>Portrait</h2>
         <p class="service-desc">
-          선수의 종목과 개성, 커리어의 서사를 한 장의 이미지에 응축시킵니다. 에이전시 프로필부터 개인 브랜딩, SNS 피드 구축까지 — 선수로서의 당신을 가장 강렬하게 보여주는 작업입니다.<br><br>
-          사전 미팅을 통해 당신이 전달하고 싶은 이미지를 함께 설계합니다. 경기복, 사복, 아웃도어 등 다양한 컨셉을 하나의 세션에서 소화합니다.
+          <span class="t-ko">선수의 종목과 개성, 커리어의 서사를 한 장의 이미지에 응축시킵니다. 에이전시 프로필부터 개인 브랜딩, SNS 피드 구축까지 — 선수로서의 당신을 가장 강렬하게 보여주는 작업입니다.<br><br>
+          사전 미팅을 통해 당신이 전달하고 싶은 이미지를 함께 설계합니다. 경기복, 사복, 아웃도어 등 다양한 컨셉을 하나의 세션에서 소화합니다.</span>
+          <span class="t-en">We condense an athlete's sport, personality, and career narrative into a single image. From agency profiles to personal branding and social media feeds — this is the work that shows you at your most powerful as an athlete.<br><br>
+          Through a pre-shoot meeting, we design together the image you want to convey. Game uniforms, casual wear, outdoor settings, and other concepts can all be covered in a single session.</span>
         </p>
         <div class="service-select-title">Select Point.</div>
         <ul class="service-select-list">
-          <li>촬영 전 1:1 컨셉 미팅 — 종목, 포지션, 목표에 맞는 비주얼 방향성을 함께 결정합니다.</li>
-          <li>스튜디오 또는 실외 로케이션 선택 가능 — 원하는 무드에 따라 최적의 환경을 제안합니다.</li>
-          <li>보정본 납품 후 피드백 1회 무제한 수정 반영을 보장합니다.</li>
+          <li><span class="t-ko">촬영 전 1:1 컨셉 미팅 — 종목, 포지션, 목표에 맞는 비주얼 방향성을 함께 결정합니다.</span><span class="t-en">A 1:1 concept meeting before the shoot — together we decide on a visual direction suited to your sport, position, and goals.</span></li>
+          <li><span class="t-ko">스튜디오 또는 실외 로케이션 선택 가능 — 원하는 무드에 따라 최적의 환경을 제안합니다.</span><span class="t-en">Choose between studio or outdoor location — we suggest the optimal setting based on the mood you want.</span></li>
+          <li><span class="t-ko">보정본 납품 후 피드백 1회 무제한 수정 반영을 보장합니다.</span><span class="t-en">After delivery of edited photos, one round of unlimited revisions based on your feedback is guaranteed.</span></li>
         </ul>
-        <a class="service-book-btn" href="#" onclick="showPage('contact');return false;">예약하기</a>
+        <a class="service-book-btn" href="#" onclick="showPage('contact');return false;"><span class="t-ko">예약하기</span><span class="t-en">Book Now</span></a>
       </div>
     </div>
 
@@ -1038,15 +1072,15 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
           <span class="package-eyebrow">Portrait</span>
         </div>
         <h2 class="package-title">Essential</h2>
-        <p class="package-desc" style="padding-bottom:24px;">에이전시 제출용, SNS 프로필 등 핵심 컷이 필요한 선수를 위한 효율적인 세션입니다.</p>
+        <p class="package-desc" style="padding-bottom:24px;"><span class="t-ko">에이전시 제출용, SNS 프로필 등 핵심 컷이 필요한 선수를 위한 효율적인 세션입니다.</span><span class="t-en">An efficient session for athletes who need essential shots for agency submissions, social media profiles, and more.</span></p>
         <div class="package-divider"></div>
-        <div class="service-select-title" style="margin-bottom:16px;margin-top:auto;">포함 사항</div>
+        <div class="service-select-title" style="margin-bottom:16px;margin-top:auto;"><span class="t-ko">포함 사항</span><span class="t-en">What's Included</span></div>
         <ul class="package-list">
-          <li>컨셉당 촬영시간 30분 (컨셉 1–2개)</li>
-          <li>보정본 2장 제공</li>
-          <li>전체 원본 파일 제공</li>
+          <li><span class="t-ko">컨셉당 촬영시간 30분 (컨셉 1–2개)</span><span class="t-en">30 minutes of shooting per concept (1–2 concepts)</span></li>
+          <li><span class="t-ko">보정본 2장 제공</span><span class="t-en">2 edited photos provided</span></li>
+          <li><span class="t-ko">전체 원본 파일 제공</span><span class="t-en">All original files provided</span></li>
         </ul>
-        <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;">예약하기</a>
+        <a class="package-btn" style="margin-top:auto;" href="#" onclick="showPage('contact');return false;"><span class="t-ko">예약하기</span><span class="t-en">Book Now</span></a>
       </div>
 
       <div class="package-card package-card-premium">
@@ -1055,18 +1089,18 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
           <span class="package-badge">Full Session</span>
         </div>
         <h2 class="package-title">Signature</h2>
-        <p class="package-desc">선수의 모든 면을 담아내는 풀데이 아카이브 세션. 에이전시 프로필·브랜드 협찬·미디어 기고 등 다목적으로 활용 가능합니다.</p>
+        <p class="package-desc"><span class="t-ko">선수의 모든 면을 담아내는 풀데이 아카이브 세션. 에이전시 프로필·브랜드 협찬·미디어 기고 등 다목적으로 활용 가능합니다.</span><span class="t-en">A full-day archive session capturing every facet of an athlete. Versatile for agency profiles, brand sponsorships, media features, and more.</span></p>
         <div class="package-divider"></div>
-        <div class="service-select-title" style="margin-bottom:16px;">포함 사항</div>
+        <div class="service-select-title" style="margin-bottom:16px;"><span class="t-ko">포함 사항</span><span class="t-en">What's Included</span></div>
         <ul class="package-list">
-          <li>컨셉별 촬영시간 45분 (컨셉 3–5개)</li>
-          <li>보정본 4장 제공</li>
-          <li>전체 원본 파일 제공</li>
-          <li>상업적 사용 라이선스 포함</li>
-          <li>촬영 후 이미지 1장 1:1 현장 보정</li>
-          <li>촬영 후 비주얼 디렉팅 리포트 제공</li>
+          <li><span class="t-ko">컨셉별 촬영시간 45분 (컨셉 3–5개)</span><span class="t-en">45 minutes of shooting per concept (3–5 concepts)</span></li>
+          <li><span class="t-ko">보정본 4장 제공</span><span class="t-en">4 edited photos provided</span></li>
+          <li><span class="t-ko">전체 원본 파일 제공</span><span class="t-en">All original files provided</span></li>
+          <li><span class="t-ko">상업적 사용 라이선스 포함</span><span class="t-en">Commercial use license included</span></li>
+          <li><span class="t-ko">촬영 후 이미지 1장 1:1 현장 보정</span><span class="t-en">One on-site 1:1 edit of a selected image after the shoot</span></li>
+          <li><span class="t-ko">촬영 후 비주얼 디렉팅 리포트 제공</span><span class="t-en">A visual direction report provided after the shoot</span></li>
         </ul>
-        <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;">예약하기</a>
+        <a class="package-btn package-btn-filled" href="#" onclick="showPage('contact');return false;"><span class="t-ko">예약하기</span><span class="t-en">Book Now</span></a>
       </div>
     </div>
   </div>
@@ -1093,6 +1127,11 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   <div class="page-title-section">
     <h1 class="page-title">Contact</h1>
   </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="ko" onclick="setLang('ko')">KOR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">ENG</button>
+  </div>
 
   <div class="contact-body">
     <div style="width:100%;height:480px;margin-bottom:40px;">
@@ -1109,26 +1148,27 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
       </li>
       <li>
         <span class="contact-label">KakaoTalk</span>
-        <a class="contact-val" href="#">카카오톡 채널 문의</a>
+        <a class="contact-val" href="#"><span class="t-ko">카카오톡 채널 문의</span><span class="t-en">Contact via KakaoTalk Channel</span></a>
       </li>
       <li>
         <span class="contact-label">Location</span>
-        <span class="contact-val">서울시 송파구 중대로20길 12, 지하 1층</span>
+        <span class="contact-val"><span class="t-ko">서울시 송파구 중대로20길 12, 지하 1층</span><span class="t-en">B1, 12 Jungdae-ro 20-gil, Songpa-gu, Seoul</span></span>
       </li>
       <li>
         <span class="contact-label">Response</span>
         <span class="contact-val" style="text-align:right;">
-          48시간 이내 회신<br>
-          <span style="font-size:13px;color:var(--gray);">주말·공휴일 포함 최대 72시간</span>
+          <span class="t-ko">48시간 이내 회신</span><span class="t-en">Reply within 48 hours</span><br>
+          <span style="font-size:13px;color:var(--gray);"><span class="t-ko">주말·공휴일 포함 최대 72시간</span><span class="t-en">Up to 72 hours including weekends &amp; holidays</span></span>
         </span>
       </li>
     </ul>
 
     <div class="contact-cta">
       <div class="contact-cta-text">
-        경기가 있는 날,<br>우리도 <em>사이드라인</em>에 있습니다.
+        <span class="t-ko">경기가 있는 날,<br>우리도 <em>사이드라인</em>에 있습니다.</span>
+        <span class="t-en">On match day,<br>we'll be on the <em>sideline</em>, too.</span>
       </div>
-      <a class="contact-cta-btn" href="mailto:hello@sideline.seoul">촬영 문의하기</a>
+      <a class="contact-cta-btn" href="mailto:hello@sideline.seoul"><span class="t-ko">촬영 문의하기</span><span class="t-en">Inquire About a Shoot</span></a>
     </div>
   </div>
 
@@ -1154,48 +1194,53 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   <div class="page-title-section">
     <h1 class="page-title">Guide</h1>
   </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="ko" onclick="setLang('ko')">KOR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">ENG</button>
+  </div>
 
   <div class="guide-body">
     <div class="guide-section">
-      <div class="guide-section-title">경기 촬영 예약</div>
+      <div class="guide-section-title"><span class="t-ko">경기 촬영 예약</span><span class="t-en">Game Coverage Booking</span></div>
       <table class="guide-table">
-        <tr><td>01</td><td>경기 정보 전달 (종목, 일시, 장소, 인원, 목적)</td></tr>
-        <tr><td>02</td><td>이메일 또는 카카오톡 채널로 문의 접수</td></tr>
-        <tr><td>03</td><td>패키지 협의 및 최종 견적 안내</td></tr>
-        <tr><td>04</td><td>예약금 입금 후 일정 확정</td></tr>
-        <tr><td>05</td><td>경기 당일 사이드라인 미팅 후 촬영 시작</td></tr>
-        <tr><td>06</td><td>납품 (48시간 이내 하이라이트 선납품)</td></tr>
+        <tr><td>01</td><td><span class="t-ko">경기 정보 전달 (종목, 일시, 장소, 인원, 목적)</span><span class="t-en">Send match details (sport, date/time, location, headcount, purpose)</span></td></tr>
+        <tr><td>02</td><td><span class="t-ko">이메일 또는 카카오톡 채널로 문의 접수</span><span class="t-en">Inquiry received via email or KakaoTalk channel</span></td></tr>
+        <tr><td>03</td><td><span class="t-ko">패키지 협의 및 최종 견적 안내</span><span class="t-en">Package discussion and final quote provided</span></td></tr>
+        <tr><td>04</td><td><span class="t-ko">예약금 입금 후 일정 확정</span><span class="t-en">Schedule confirmed after deposit payment</span></td></tr>
+        <tr><td>05</td><td><span class="t-ko">경기 당일 사이드라인 미팅 후 촬영 시작</span><span class="t-en">On match day, shooting begins after a sideline meeting</span></td></tr>
+        <tr><td>06</td><td><span class="t-ko">납품 (48시간 이내 하이라이트 선납품)</span><span class="t-en">Delivery (highlight cuts delivered first within 48 hours)</span></td></tr>
       </table>
     </div>
     <div class="guide-section">
-      <div class="guide-section-title">선수 프로필 촬영 예약</div>
+      <div class="guide-section-title"><span class="t-ko">선수 프로필 촬영 예약</span><span class="t-en">Athlete Portrait Booking</span></div>
       <table class="guide-table">
-        <tr><td>01</td><td>이메일 또는 카카오톡으로 문의 접수</td></tr>
-        <tr><td>02</td><td>1:1 사전 미팅 (컨셉·방향성 협의)</td></tr>
-        <tr><td>03</td><td>패키지 선택 및 예약금 안내</td></tr>
-        <tr><td>04</td><td>예약금 입금 후 촬영일 확정</td></tr>
-        <tr><td>05</td><td>촬영 당일 진행</td></tr>
-        <tr><td>06</td><td>보정본 납품 및 피드백 반영</td></tr>
+        <tr><td>01</td><td><span class="t-ko">이메일 또는 카카오톡으로 문의 접수</span><span class="t-en">Inquiry received via email or KakaoTalk</span></td></tr>
+        <tr><td>02</td><td><span class="t-ko">1:1 사전 미팅 (컨셉·방향성 협의)</span><span class="t-en">1:1 pre-shoot meeting (concept and direction discussion)</span></td></tr>
+        <tr><td>03</td><td><span class="t-ko">패키지 선택 및 예약금 안내</span><span class="t-en">Package selection and deposit information provided</span></td></tr>
+        <tr><td>04</td><td><span class="t-ko">예약금 입금 후 촬영일 확정</span><span class="t-en">Shoot date confirmed after deposit payment</span></td></tr>
+        <tr><td>05</td><td><span class="t-ko">촬영 당일 진행</span><span class="t-en">Shoot takes place on the scheduled day</span></td></tr>
+        <tr><td>06</td><td><span class="t-ko">보정본 납품 및 피드백 반영</span><span class="t-en">Edited photos delivered and feedback incorporated</span></td></tr>
       </table>
     </div>
     <div class="guide-section">
-      <div class="guide-section-title">예약 안내</div>
+      <div class="guide-section-title"><span class="t-ko">예약 안내</span><span class="t-en">Booking Information</span></div>
       <table class="guide-table">
-        <tr><td>운영 방식</td><td>Sideline.seoul은 사전 예약제로만 운영합니다. 당일 현장 섭외는 불가합니다.</td></tr>
-        <tr><td>예약 방법</td><td>이메일(hello@sideline.seoul), 카카오톡 채널을 통해 접수하실 수 있습니다.</td></tr>
-        <tr><td>예약금</td><td>총 촬영비의 30%를 선입금하셔야 예약이 확정됩니다.</td></tr>
-        <tr><td>중복 예약</td><td>동일 일정에 복수 문의가 들어올 경우, 예약금 선입금 순으로 우선 확정합니다.</td></tr>
-        <tr><td>잔액 결제</td><td>촬영 당일 현장 계좌이체 또는 사전 이체 모두 가능합니다.</td></tr>
-        <tr><td>파일 전달</td><td>Google Drive 링크로 전달합니다. 링크 유효 기간은 납품일로부터 60일입니다.</td></tr>
+        <tr><td><span class="t-ko">운영 방식</span><span class="t-en">Operation</span></td><td><span class="t-ko">Sideline.seoul은 사전 예약제로만 운영합니다. 당일 현장 섭외는 불가합니다.</span><span class="t-en">Sideline.seoul operates by appointment only. On-site, same-day booking is not available.</span></td></tr>
+        <tr><td><span class="t-ko">예약 방법</span><span class="t-en">How to Book</span></td><td><span class="t-ko">이메일(hello@sideline.seoul), 카카오톡 채널을 통해 접수하실 수 있습니다.</span><span class="t-en">Bookings can be made via email (hello@sideline.seoul) or our KakaoTalk channel.</span></td></tr>
+        <tr><td><span class="t-ko">예약금</span><span class="t-en">Deposit</span></td><td><span class="t-ko">총 촬영비의 30%를 선입금하셔야 예약이 확정됩니다.</span><span class="t-en">A 30% deposit of the total shoot fee is required to confirm a booking.</span></td></tr>
+        <tr><td><span class="t-ko">중복 예약</span><span class="t-en">Overlapping Requests</span></td><td><span class="t-ko">동일 일정에 복수 문의가 들어올 경우, 예약금 선입금 순으로 우선 확정합니다.</span><span class="t-en">If multiple inquiries are received for the same date, priority is given in order of deposit payment.</span></td></tr>
+        <tr><td><span class="t-ko">잔액 결제</span><span class="t-en">Balance Payment</span></td><td><span class="t-ko">촬영 당일 현장 계좌이체 또는 사전 이체 모두 가능합니다.</span><span class="t-en">The remaining balance can be paid via bank transfer either on the day or in advance.</span></td></tr>
+        <tr><td><span class="t-ko">파일 전달</span><span class="t-en">File Delivery</span></td><td><span class="t-ko">Google Drive 링크로 전달합니다. 링크 유효 기간은 납품일로부터 60일입니다.</span><span class="t-en">Files are delivered via a Google Drive link, valid for 60 days from the delivery date.</span></td></tr>
       </table>
     </div>
     <div class="guide-section">
-      <div class="guide-section-title">취소 및 변경</div>
+      <div class="guide-section-title"><span class="t-ko">취소 및 변경</span><span class="t-en">Cancellation &amp; Changes</span></div>
       <table class="guide-table">
-        <tr><td>일정 변경</td><td>촬영일 기준 7일 전까지 1회 변경 가능합니다. 이후에는 불가합니다.</td></tr>
-        <tr><td>환불</td><td>예약금은 원칙적으로 환불되지 않습니다.</td></tr>
-        <tr><td>기상·천재지변</td><td>불가피한 야외 촬영 취소의 경우 예약금 환불 또는 일정 재조율이 가능합니다.</td></tr>
-        <tr><td>당일 취소</td><td>고객 사유에 의한 당일 취소 및 노쇼는 전액 청구됩니다.</td></tr>
+        <tr><td><span class="t-ko">일정 변경</span><span class="t-en">Rescheduling</span></td><td><span class="t-ko">촬영일 기준 7일 전까지 1회 변경 가능합니다. 이후에는 불가합니다.</span><span class="t-en">A one-time reschedule is allowed up to 7 days before the shoot date. No changes after that.</span></td></tr>
+        <tr><td><span class="t-ko">환불</span><span class="t-en">Refunds</span></td><td><span class="t-ko">예약금은 원칙적으로 환불되지 않습니다.</span><span class="t-en">Deposits are non-refundable as a general policy.</span></td></tr>
+        <tr><td><span class="t-ko">기상·천재지변</span><span class="t-en">Weather &amp; Natural Disasters</span></td><td><span class="t-ko">불가피한 야외 촬영 취소의 경우 예약금 환불 또는 일정 재조율이 가능합니다.</span><span class="t-en">In case of unavoidable cancellation of an outdoor shoot, a deposit refund or rescheduling is possible.</span></td></tr>
+        <tr><td><span class="t-ko">당일 취소</span><span class="t-en">Same-Day Cancellation</span></td><td><span class="t-ko">고객 사유에 의한 당일 취소 및 노쇼는 전액 청구됩니다.</span><span class="t-en">Same-day cancellations or no-shows due to client reasons will be charged in full.</span></td></tr>
       </table>
     </div>
   </div>
@@ -1222,11 +1267,16 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   <div class="page-title-section">
     <h1 class="page-title">About <em>Sideline</em></h1>
   </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" data-lang="ko" onclick="setLang('ko')">KOR</button>
+    <span class="lang-sep">/</span>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">ENG</button>
+  </div>
 
   <div class="about-statement">
-    <p>스포츠의 진짜 드라마는 경기장 안과 밖이 교차하는 가장 치열한 경계선에서 완성됩니다.</p>
-    <p>스포츠 촬영팀 sideline은 그 이름처럼, 언제나 경기장의 사이드라인에 밀착하여 가장 날것의 순간을 포착합니다. 승리를 향해 질주하는 선수의 움직임부터 찰나의 판단이 오가는 극적인 순간까지, 화려한 연출을 배제하고 현장의 공기와 선수의 진짜 모습을 정직하게 담아내는 것에 집중합니다.</p>
-    <p>단순히 멀리서 지켜보는 제3자의 시선이 아닙니다. 가장 가까운 곳에서 함께 호흡하고 치열하게 기록하는 동반자로서 sideline이 당신의 위대한 타임라인을 남기겠습니다.</p>
+    <p><span class="t-ko">스포츠의 진짜 드라마는 경기장 안과 밖이 교차하는 가장 치열한 경계선에서 완성됩니다.</span><span class="t-en">The real drama of sport is completed at the fiercest border where the inside and outside of the field intersect.</span></p>
+    <p><span class="t-ko">스포츠 촬영팀 sideline은 그 이름처럼, 언제나 경기장의 사이드라인에 밀착하여 가장 날것의 순간을 포착합니다. 승리를 향해 질주하는 선수의 움직임부터 찰나의 판단이 오가는 극적인 순간까지, 화려한 연출을 배제하고 현장의 공기와 선수의 진짜 모습을 정직하게 담아내는 것에 집중합니다.</span><span class="t-en">True to its name, sports media team sideline always stays close to the sideline of the field, capturing the rawest moments. From an athlete's sprint toward victory to the split-second decisions that decide everything, we focus on honestly capturing the atmosphere of the field and the athlete's true self — without staged direction.</span></p>
+    <p><span class="t-ko">단순히 멀리서 지켜보는 제3자의 시선이 아닙니다. 가장 가까운 곳에서 함께 호흡하고 치열하게 기록하는 동반자로서 sideline이 당신의 위대한 타임라인을 남기겠습니다.</span><span class="t-en">We are not a distant third-party observer. As a companion who breathes alongside you and records every moment from the closest distance, sideline will preserve your greatest timeline.</span></p>
   </div>
 
   <div class="about-grid">
@@ -1240,9 +1290,12 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
         <div class="about-card-role">Photographer</div>
         <div class="about-card-name">유지원</div>
         <p class="about-card-desc">
-          링 위의 순간은 선수가 평생을 걸어온 길의 총합입니다. 그 무게를 한 컷에 담기 위해, 셔터를 누르기 전 선수의 숨결까지 읽습니다.<br><br>
+          <span class="t-ko">링 위의 순간은 선수가 평생을 걸어온 길의 총합입니다. 그 무게를 한 컷에 담기 위해, 셔터를 누르기 전 선수의 숨결까지 읽습니다.<br><br>
           스포츠 영양제 브랜드 Extreme, 복싱 브랜드 312의 공식 포토그래퍼로 활동했으며, 복싱 대회 NO KO NO WIN의 오피셜 포토그래퍼로서 현장의 날것을 기록해왔습니다.<br><br>
-          경기장의 열기와 선수의 집중, 그 교차점에서 터지는 결정적 순간 — 그것이 유지원이 쫓는 한 장입니다.
+          경기장의 열기와 선수의 집중, 그 교차점에서 터지는 결정적 순간 — 그것이 유지원이 쫓는 한 장입니다.</span>
+          <span class="t-en">A moment in the ring is the sum of an athlete's entire journey. To capture that weight in a single frame, I read an athlete's breath even before pressing the shutter.<br><br>
+          I've worked as the official photographer for sports supplement brand Extreme, boxing brand 312, and the boxing event NO KO NO WIN, documenting the raw reality of the scene.<br><br>
+          The decisive moment where the heat of the arena meets an athlete's focus — that's the shot Yujiwon chases.</span>
         </p>
         <div class="about-card-sports">
           <span class="about-sport-tag">Boxing</span>
@@ -1268,9 +1321,12 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
         <div class="about-card-role">Photographer</div>
         <div class="about-card-name">신화삼</div>
         <p class="about-card-desc">
-          스포츠는 각본 없는 드라마이며, 그라운드 위에서 타오르는 열정은 두 번 다시 똑같은 형태로 반복되지 않습니다.<br><br>
+          <span class="t-ko">스포츠는 각본 없는 드라마이며, 그라운드 위에서 타오르는 열정은 두 번 다시 똑같은 형태로 반복되지 않습니다.<br><br>
           거친 숨소리, 뺨을 타고 흐르는 땀방울, 승리를 향한 지독한 집념까지. Sideline.seoul은 그라운드 위에서 흔적 없이 휘발되어 버릴 찰나의 에너지를, 영원히 숨 쉬는 시각적 유산으로 조각합니다.<br><br>
-          카메라 렌즈 너머로 선수의 심장 박동을 쫓으며, 당신이 흘린 땀의 무게가 가장 찬란한 예술 작품이 되는 순간을 약속합니다.
+          카메라 렌즈 너머로 선수의 심장 박동을 쫓으며, 당신이 흘린 땀의 무게가 가장 찬란한 예술 작품이 되는 순간을 약속합니다.</span>
+          <span class="t-en">Sport is drama without a script, and the passion that burns on the field never repeats in the same form twice.<br><br>
+          From ragged breathing and sweat running down a cheek, to the relentless will to win — Sideline.seoul carves the fleeting energy that would otherwise vanish from the field into a visual legacy that breathes forever.<br><br>
+          Chasing an athlete's heartbeat through the lens, we promise the moment when the weight of your sweat becomes the most brilliant work of art.</span>
         </p>
         <div class="about-card-sports">
           <span class="about-sport-tag">Rugby</span>
@@ -1369,6 +1425,16 @@ function filterWork(cat) {
   var loadBtn = document.getElementById('work-load-more');
   if (loadBtn) loadBtn.style.display = filtered.length > WORK_PAGE_SIZE ? 'flex' : 'none';
 
+}
+
+/* ── LANG TOGGLE ── */
+var currentLang = 'ko';
+function setLang(lang) {
+  currentLang = lang;
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
 }
 
 /* ── VIEW TOGGLE ── */
