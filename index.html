@@ -180,14 +180,38 @@ body {
 .home-grid-item:hover img { transform:scale(1.06); }
 
 /* WORK GRID */
+.work-grid-wrap {
+  margin:24px 48px 0;
+  display:flex;
+  justify-content:flex-start;
+}
+.view-group { display:flex; gap:4px; align-items:center; }
+.view-btn {
+  background:none;
+  border:none;
+  color:var(--gray);
+  cursor:pointer;
+  padding:5px 6px;
+  border-radius:3px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all 0.2s;
+}
+.view-btn svg { width:13px; height:13px; display:block; }
+.view-btn:hover { color:var(--black); }
+.view-btn.active { color:var(--black); background:var(--light); }
+
 .work-grid {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:2px;
+  gap:5px;
   background:#0a0a0a;
-  margin-top:48px;
-  margin-left:48px;
+  margin:12px 48px 0;
 }
+.work-grid.view-grid { grid-template-columns:repeat(4,1fr); }
+.work-grid.view-list { grid-template-columns:repeat(2,1fr); }
+.work-grid.view-feed { grid-template-columns:repeat(3,1fr); }
+.work-grid.view-full { grid-template-columns:repeat(1,1fr); }
 .work-item {
   aspect-ratio:3/4;
   overflow:hidden;
@@ -754,8 +778,13 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
   .home-grid { grid-template-columns:repeat(2,1fr); margin:2px 0 0; }
   .home-grid-item { aspect-ratio:1/1; }
 
-  .work-grid { grid-template-columns:repeat(2,1fr); margin:24px 0 0; }
-  .work-item { aspect-ratio:1/1; }
+  .work-grid-wrap { margin:16px 16px 0; }
+  .work-grid { margin:8px 0 0; }
+  .work-grid.view-grid { grid-template-columns:repeat(2,1fr); }
+  .work-grid.view-list { grid-template-columns:repeat(1,1fr); }
+  .work-grid.view-feed { grid-template-columns:repeat(2,1fr); }
+  .work-grid.view-full { grid-template-columns:repeat(1,1fr); }
+  .work-item { aspect-ratio:3/4; }
 
   .service-content { grid-template-columns:1fr; margin:40px 16px 40px; gap:40px; }
   .service-content-img { aspect-ratio:3/2; }
@@ -817,7 +846,24 @@ footer { border-top:1px solid var(--light); padding:24px 48px; margin-top:80px; 
     </div>
   </div>
 
-  <div class="work-grid" id="work-grid">
+  <div class="work-grid-wrap">
+    <div class="view-group">
+      <button class="view-btn active" onclick="setView('grid')" id="vb-grid" title="Grid">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="0" width="7" height="7"/><rect x="9" y="0" width="7" height="7"/><rect x="0" y="9" width="7" height="7"/><rect x="9" y="9" width="7" height="7"/></svg>
+      </button>
+      <button class="view-btn" onclick="setView('list')" id="vb-list" title="List">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="0" width="7" height="4"/><rect x="9" y="0" width="7" height="4"/><rect x="0" y="6" width="7" height="4"/><rect x="9" y="6" width="7" height="4"/><rect x="0" y="12" width="7" height="4"/><rect x="9" y="12" width="7" height="4"/></svg>
+      </button>
+      <button class="view-btn" onclick="setView('feed')" id="vb-feed" title="Feed">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="0" width="4" height="16"/><rect x="6" y="0" width="4" height="16"/><rect x="12" y="0" width="4" height="16"/></svg>
+      </button>
+      <button class="view-btn" onclick="setView('full')" id="vb-full" title="Full">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="0" width="16" height="16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="work-grid view-grid" id="work-grid">
     <!-- Boxing -->
     <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_1.jpg" alt=""></div>
     <div class="work-item" data-cat="boxing" onclick="openLightbox(this.querySelector('img').src)"><img src="images/boxing/box_2.jpg" alt=""></div>
@@ -1323,6 +1369,15 @@ function filterWork(cat) {
   var loadBtn = document.getElementById('work-load-more');
   if (loadBtn) loadBtn.style.display = filtered.length > WORK_PAGE_SIZE ? 'flex' : 'none';
 
+}
+
+/* ── VIEW TOGGLE ── */
+function setView(v) {
+  ['grid','list','feed','full'].forEach(function(name) {
+    document.getElementById('vb-' + name).classList.toggle('active', name === v);
+  });
+  var grid = document.getElementById('work-grid');
+  grid.className = 'work-grid view-' + v;
 }
 
 /* ── SERVICE FILTER ── */
