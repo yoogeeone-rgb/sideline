@@ -1458,7 +1458,7 @@ function showServicePanel(id) {
 var lbImages = [], lbIndex = 0;
 function openLightbox(src) {
   var activePage = document.querySelector('.page.active');
-  var imgs = activePage.querySelectorAll('.work-item img, .package-gallery-item img');
+  var imgs = activePage.querySelectorAll('.work-item:not([style*="display: none"]) img, .package-gallery-item img');
   lbImages = Array.from(imgs).map(function(img) { return img.src; });
   lbIndex = lbImages.indexOf(src);
   if (lbIndex === -1) lbIndex = 0;
