@@ -443,24 +443,33 @@
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 480px 320px;
       gap: 2px;
     }
 
     .portfolio-item {
-      aspect-ratio: 4/3;
       background: var(--card);
       border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
       overflow: hidden;
       cursor: pointer;
     }
 
-    .portfolio-item:first-child {
-      grid-column: span 2;
-      aspect-ratio: 16/9;
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portfolio-wide {
+      grid-column: 1 / 3;
+      grid-row: 1;
+    }
+
+    .portfolio-tall {
+      grid-column: 3;
+      grid-row: 1 / 3;
     }
 
     .portfolio-placeholder {
@@ -485,63 +494,59 @@
       font-weight: 400;
     }
 
-    /* Portfolio CTA box */
-    .portfolio-cta-box {
+    /* Portfolio CTA bar (below grid) */
+    .portfolio-cta-bar {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-align: center;
-      padding: 24px;
-      height: 100%;
-      width: 100%;
-      text-decoration: none;
+      justify-content: space-between;
+      margin-top: 2px;
+      gap: 2px;
     }
 
     .portfolio-cta-main {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       background: var(--red);
-      border-color: var(--red) !important;
-    }
-
-    .portfolio-cta-main .portfolio-cta-box {
       color: #fff;
+      text-decoration: none;
+      padding: 20px 32px;
+      flex: 1;
+      transition: opacity 0.2s;
     }
 
-    .portfolio-cta-main .cta-arrow {
-      font-size: 32px;
+    .portfolio-cta-main:hover { opacity: 0.88; }
+
+    .cta-arrow {
+      font-size: 22px;
       line-height: 1;
     }
 
-    .portfolio-cta-main .cta-label {
-      font-size: 11px;
+    .cta-label {
+      font-size: 12px;
       letter-spacing: 0.15em;
       font-weight: 600;
     }
 
-    .portfolio-cta-main .cta-sub {
+    .cta-sub {
       font-size: 10px;
       letter-spacing: 0.1em;
       opacity: 0.75;
-      margin-top: -4px;
       font-weight: 400;
     }
 
     .portfolio-insta-link {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .portfolio-insta-link a {
       font-size: 11px;
       color: var(--white);
       letter-spacing: 0.1em;
       text-decoration: none;
-      opacity: 0.6;
+      opacity: 0.5;
+      padding: 20px 32px;
       transition: opacity 0.2s;
+      white-space: nowrap;
     }
 
-    .portfolio-insta-link a:hover { opacity: 1; }
+    .portfolio-insta-link:hover { opacity: 1; }
 
     /* CONTACT */
     .contact-inner {
@@ -818,29 +823,33 @@
         <p>작업물은 홈페이지에서 확인하실 수 있습니다.</p>
       </div>
       <div class="portfolio-grid">
-        <div class="portfolio-item">
-          <img src="/landing/images/image01.jpeg" alt="Sideline 포트폴리오 01" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <!-- 상단 좌 (와이드, 2칸) -->
+        <div class="portfolio-item portfolio-wide">
+          <img src="/landing/images/image01.jpeg" alt="Sideline 포트폴리오 01">
         </div>
-        <div class="portfolio-item">
-          <img src="/landing/images/image02.jpeg" alt="Sideline 포트폴리오 02" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <!-- 우측 세로 (2행 스팬, 붉은 버튼까지 닿음) — 기존 image04 -->
+        <div class="portfolio-item portfolio-tall">
+          <img src="/landing/images/image04.jpeg" alt="Sideline 포트폴리오 04">
         </div>
+        <!-- 하단 좌 -->
         <div class="portfolio-item">
-          <img src="/landing/images/image03.jpeg" alt="Sideline 포트폴리오 03" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <img src="/landing/images/image03.jpeg" alt="Sideline 포트폴리오 03">
         </div>
+        <!-- 하단 중 — 기존 image02 -->
         <div class="portfolio-item">
-          <img src="/landing/images/image04.jpeg" alt="Sideline 포트폴리오 04" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-        <!-- CTA: main → website, secondary → instagram -->
-        <div class="portfolio-item portfolio-cta-main">
-          <a href="https://sideline.seoul" class="portfolio-cta-box">
-            <div class="cta-arrow">↗</div>
-            <div class="cta-label">작업물 전체 보기</div>
-            <div class="cta-sub">sideline.seoul</div>
-          </a>
+          <img src="/landing/images/image02.jpeg" alt="Sideline 포트폴리오 02">
         </div>
       </div>
-      <div class="portfolio-insta-link">
-        <a href="https://instagram.com/sideline.seoul">Instagram @sideline.seoul ↗</a>
+      <!-- CTA 바 -->
+      <div class="portfolio-cta-bar">
+        <a href="https://sideline.seoul" class="portfolio-cta-main">
+          <span class="cta-arrow">↗</span>
+          <span class="cta-label">작업물 전체 보기</span>
+          <span class="cta-sub">sideline.seoul</span>
+        </a>
+        <a href="https://instagram.com/sideline.seoul" class="portfolio-insta-link">
+          Instagram @sideline.seoul ↗
+        </a>
       </div>
     </div>
   </section>
